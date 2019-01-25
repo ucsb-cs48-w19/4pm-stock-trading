@@ -7,4 +7,5 @@ def hello():
     return render_template("hello.html", title = 'HelloWorld')
 
 if __name__ == "__main__":
-	app.run(port = 33507)
+	port = int(os.environ.get('PORT', 33507))
+	app.run()
