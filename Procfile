@@ -1,1 +1,1 @@
-web: gunicorn helloworld.py --log-file -
+web: python helloworld.py
