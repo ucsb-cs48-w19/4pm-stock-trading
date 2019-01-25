@@ -7,5 +7,4 @@ def hello():
     return render_template("hello.html", title = 'HelloWorld')
 
 if __name__ == "__main__":
-	#app.listen(process.env.PORT || 3000)
 	app.run(port = 33507)
