@@ -8,7 +8,7 @@ A simple easy to use app that helps you make more informed stock-related decisio
 
 ### Additional information about the project
 
-TODO: Write a compelling/creative/informative project description / summary
+This app displays a list of popular stocks and allows you to choose which ones you want to learn more about. Once you choose a stock, you will be able to see important information about it such as its current price per unit and a graph of its recent price history. In addition, the app will recommend stocks for you to buy based on your interests and specifications.
 
 ## Installation
 
