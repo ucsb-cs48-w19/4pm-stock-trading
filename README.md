@@ -10,7 +10,6 @@ A simple easy to use app that helps you make more informed stock-related decisio
 
 TODO: Write a compelling/creative/informative project description / summary
 
-
 ## Installation
 
 Ensure that `Flask` is installed by typing in the command
@@ -21,13 +20,13 @@ This assumes that Python 2.7 and above is installed.
 
 ### Prerequisites
 
-TODO: List what a user needs to have installed before running the installation instructions below (e.g., git, which versions of Ruby/Rails)
+* Flask (as indicated above)
+* Python 2.7 and above
 
 ### Installation Steps
 
 TODO: Describe the installation process (making sure you mention `bundle install`).
 Instructions need to be such that a user can just copy/paste the commands to get things set up and running. 
-
 
 ## Functionality
 
@@ -37,11 +36,9 @@ Deploy your `hello.py` script by executing the command
 
 The site is deployed locally on http://localhost:5000/.
 
-
 ## Known Problems
 
 * Fails to deploy on Heroku and can only run on localhost 
-
 
 ## Contributing
 
