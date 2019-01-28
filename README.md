@@ -4,7 +4,7 @@
 
 ### One-sentence description of the project
 
-TODO: A 20-second elevator pitch of your project - its core idea summarized in one sentence.
+A simple easy to use app that helps you make more informed stock-related decisions.
 
 ### Additional information about the project
 
