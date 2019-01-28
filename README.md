@@ -40,12 +40,10 @@ The site is deployed locally on http://localhost:5000/.
 
 ## Known Problems
 
-[.] Fails to deploy on Heroku
+* Fails to deploy on Heroku and can only run on localhost 
 
 
 ## Contributing
-
-TODO: Leave the steps below if you want others to contribute to your project.
 
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
@@ -55,5 +53,4 @@ TODO: Leave the steps below if you want others to contribute to your project.
 
 ## License
 
-If you haven't already, add a file called `LICENSE.txt` with the text of the appropriate license.
-We recommend using the MIT license: <https://choosealicense.com/licenses/mit/>
+Licensed under MIT License.
