@@ -40,8 +40,7 @@ The site is deployed locally on http://localhost:5000/.
 
 ## Known Problems
 
-TODO: Describe any known issues, bugs, odd behaviors or code smells. 
-Provide steps to reproduce the problem and/or name a file or a function where the problem lives.
+[.] Fails to deploy on Heroku
 
 
 ## Contributing
