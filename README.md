@@ -1,12 +1,10 @@
 # 4pm-stock-trading
 
+URL to current app: https://stock-trading-hello-world.herokuapp.com/
+
 ## Project summary
 
-### One-sentence description of the project
-
-An app that displays information about stocks and provides recommendations to the user.
-
-### Additional information about the project
+### An app that displays information about stocks and provides recommendations to the user.
 
 This app displays a list of popular stocks and allows you to choose which ones you want to learn more about. Once you choose a stock, you will be able to see important information about it such as its current price per unit and a graph of its recent price history. In addition, the app will recommend stocks for you to buy based on your interests and specifications.
 
