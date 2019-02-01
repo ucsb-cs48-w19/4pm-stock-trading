@@ -12,23 +12,24 @@ This app displays a list of popular stocks and allows you to choose which ones y
 
 ### Prerequisites
 
-* Python 2.7 or higher
-* Flask
-* git
-* Heroku
+* Flask (as indicated above)
+* Python 2.7 and above
 
 ### Installation Steps
 
-TODO: Describe the installation process (making sure you mention `bundle install`).
-Instructions need to be such that a user can just copy/paste the commands to get things set up and running. 
+Ensure that `Flask` is installed by typing in the command
 
+`$ pip install Flask` 
+
+This assumes that Python 2.7 and above is installed.
 
 ## Functionality
 
-1. Clone this repo
-2. Switch to the shirlyntang branch: `git checkout shirlyntang`
-3. Push to Heroku: `git push heroku shirlyntang:master`
-4. Access the website at https://stock-trading-hello-world.herokuapp.com/
+Deploy your `hello.py` script by executing the command
+
+`$ FLASK_APP=hello.py flask run`
+
+The site is deployed locally on http://localhost:5000/.
 
 ## Contributing
 
@@ -37,3 +38,8 @@ Instructions need to be such that a user can just copy/paste the commands to get
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
+
+
+## License
+
+Licensed under MIT License.
