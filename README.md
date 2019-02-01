@@ -1,6 +1,10 @@
-# 4PM-STOCK-TRADING 
+# 4pm-stock-trading
+
+URL to current app: https://stock-trading-hello-world.herokuapp.com/
 
 ## Project summary
+
+### An app that displays information about stocks and provides recommendations to the user.
 
 ### One-sentence description of the project
 
@@ -25,6 +29,12 @@ This assumes that Python 2.7 and above is installed.
 
 ### Installation Steps
 
+Ensure that `Flask` is installed by typing in the command
+
+`$ pip install Flask` 
+
+This assumes that Python 2.7 and above is installed.
+
 TODO: Describe the installation process (making sure you mention `bundle install`).
 Instructions need to be such that a user can just copy/paste the commands to get things set up and running. 
 
@@ -37,8 +47,7 @@ Deploy your `hello.py` script by executing the command
 The site is deployed locally on http://localhost:5000/.
 
 ## Known Problems
-
-* Fails to deploy on Heroku and can only run on localhost 
+N/A
 
 ## Contributing
 

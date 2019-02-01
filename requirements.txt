@@ -1,3 +1,6 @@
+Flask==1.0.2
+gunicorn==19.6.0
 django
 gunicorn
 django-heroku
+
