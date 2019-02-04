@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <link rel="stylesheet" type="text/css"  href="style.css">
-<style>
+/* Add a black background color to the top navigation */
 .topnav {
   background-color: #333;
   overflow: hidden;
@@ -30,20 +25,3 @@
   background-color: #4CAF50;
   color: white;
 }
-</style>
-
-
-
-</head>
-<body>
-
-<div class="topnav">
-  <a class="active" href="#home">Home</a>
-  <a href="#Recommended Stocks">Recommended Stocks</a>
-  <a href="#My Stocks">My Stocks</a>
-  <a href="#About">About</a>
-</div>
-
-<p>Hello world in HTML!!</p>
-</body>
-</html>
