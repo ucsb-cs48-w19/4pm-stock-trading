@@ -1,6 +1,6 @@
 # 4pm-stock-trading
 
-URL to current app: https://stock-trading-hello-world.herokuapp.com/
+URL to current app: https://morning-stream-28805.herokuapp.com/
 
 ## Project summary
 
@@ -44,7 +44,7 @@ Deploy your `hello.py` script by executing the command
 
 `$ FLASK_APP=hello.py flask run`
 
-The site is deployed locally on http://localhost:5000/.
+The site is deployed locally on https://stock-trading-hello-world.herokuapp.com/.
 
 ## Known Problems
 N/A
