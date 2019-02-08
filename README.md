@@ -1,5 +1,4 @@
 # 4pm-stock-trading
-# (BRANCH: HARD CODING STOCKS)
 
 URL to current app: https://morning-stream-28805.herokuapp.com/
 
