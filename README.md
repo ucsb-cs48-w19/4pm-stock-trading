@@ -1,6 +1,6 @@
 # 4pm-stock-trading
 
-URL to current app: https://stock-trading-hello-world.herokuapp.com/
+URL to current app: https://morning-stream-28805.herokuapp.com/
 
 ## Project summary
 
