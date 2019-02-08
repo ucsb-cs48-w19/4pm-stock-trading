@@ -1,11 +1,341 @@
-<html>
-<header><title>Hello World</title></header>
-<body>
-	Hello, World
 <!DOCTYPE html>
 <html>
+<head>
+	<link rel="stylesheet"  type="text/css" href="{{url_for('static', filename='styles.css')}}">
+	<link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
+</head>
+<style>
+	@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+	html,
+	body{
+		margin: 0;
+		height:100%;
+		background: rgb(12,11,37);
+		background: linear-gradient(130deg, rgba(12,11,37,1) 0%, rgba(1,8,22,1) 100%);
+		background-size: cover;
+	}
+	section{
+		margin: 50px;
+		font-family: 'Julius Sans One', sans-serif;
+		margin-top: 0px;
+	}
+	#myInput {
+		background: rgba(255,255,255,0.0);
+		color: white;
+		background-image: url("{{url_for('static', filename='search.png')}}"); /* Add a search icon to input */
+		background-size: 20px 20px;
+		background-position: 10px 12px; /* Position the search icon */
+		background-repeat: no-repeat; /* Do not repeat the icon image */
+		width: inherit; 
+		border: none;
+		border-bottom: 2px solid #aaa;
+		outline: none;
+		font-size: 16px; /* Increase font-size */
+		padding: 12px 20px 5px 40px; /* Add some padding */ 
+		margin-bottom: 12px; /* Add some space below the input */
+		transition: .3s ease-out;
+		-webkit-box-shadow: 0 2px 10px 1px rgba(0,0,0,0.5);
+  		box-shadow: 0 2px 10px 1px rgba(0,0,0,0.5);
+	}
+	#myInput:focus{
+		
+		border-bottom: 2px solid white;
+	}
+	#myInput:focus::placeholder{
+		transition: .3s ease-out;
+		color: white;
+	}
+	table{
+		width:100%;
+		table-layout: fixed;
+	}
+	.tbl-header{
+  	background-color: rgba(255,255,255,0.3);
+ 	}
+	th{
+		padding: 20px 15px;
+		text-align: left;
+		font-weight: 500;
+		font-size: 12px;
+		color: #fff;
+		text-transform: uppercase;
+	}
+	td{
+		padding: 15px;
+		text-align: left;
+		vertical-align:middle;
+		font-weight: 300;
+		font-size: 12px;
+		color: #fff;
+		border-bottom: solid 1px rgba(255,255,255,0.1);
+	}
+	.tbl-content{
+		height:400px;
+		overflow-x:auto;
+		margin-top: 0px;
+		border: 1px solid rgba(255,255,255,0.3);
+	}
+	.collapsible {
+		
+	}
+	
+	.active, .collapsible:hover {
+		
+	}
+	.clickable{
+		transition: .5s ease-out;
+	}
+	.clickable:hover {
+		color: white;
+		background-color: rgba(255,255,255,.5);
+		
+	}
+	
+	.content {
+		width: auto;
+		height: auto;
+		padding: 0 18px;
+		display: none;
+		overflow: hidden;
+		background-color: #f1f1f1;
+	}
+	.header{
+		color: white;
+		text-align: center;
+		font-family: 'Julius Sans One', sans-serif;
+	}
+</style>
 <body>
-<h1>4pm Stock Trading App</h1>
-<p>This is a hello world for the UCSB-CS48-W19 Stock Trading app.</p>
+<h3 class = "header">STOCK LIST</h3>
+<section>
+	<input type="text" id="myInput" onkeyup="filter()" placeholder="Search for stocks">
+	<div class="tbl-header">
+			<table cellpadding="0" cellspacing="0">
+				<thead>
+					<tr>
+						<th>Code</th>
+						<th>Company</th>
+						<th>Price</th>
+						<th>Change</th>
+						<th>Change %</th>
+					</tr>
+				</thead>
+			</table>
+	</div>
+	<div class="tbl-content">
+			<table cellpadding="0" cellspacing="0" id = "myTable">
+				<tbody>
+					<tr class = "clickable">
+						<td>AAPL</td>
+						<td>Apple </td>
+						<td>$1.38</td>
+						<td>+2.01</td>
+						<td>-0.36%</td>
+					</tr>
+					<tr class = "clickable">
+						<td>TWLO</td>
+						<td>Twilio</td>
+						<td>$2.38</td>
+						<td>-0.01</td>
+						<td>-1.36%</td>
+					</tr>
+					<tr class = "clickable">
+						<td>FB</td>
+						<td>Facebook</td>
+						<td>$3.22</td>
+						<td>+0.01</td>
+						<td>+1.36%</td>
+					</tr>
+					<tr class = "clickable">
+						<td>NFLX</td>
+						<td>Netflix</td>
+						<td>$1.02</td>
+						<td>-1.01</td>
+						<td>+2.36%</td>
+					</tr>
+					<tr class = "clickable">
+						<td>PYPL</td>
+						<td>Paypal </td>
+						<td>$1.38</td>
+						<td>+2.01</td>
+						<td>-0.36%</td>
+					</tr>
+					<tr class = "clickable">
+						<td>STX</td>
+						<td>Seagate</td>
+						<td>$2.38</td>
+						<td>-0.01</td>
+						<td>-1.36%</td>
+					</tr>
+					<tr class = "clickable">
+						<td>AAX</td>
+						<td>ADELAIDE</td>
+						<td>$3.22</td>
+						<td>+0.01</td>
+						<td>+1.36%</td>
+					</tr>
+					<tr class = "clickable">
+						<td>XXD</td>
+						<td>ADITYA BIRLA</td>
+						<td>$1.02</td>
+						<td>-1.01</td>
+						<td>+2.36%</td>
+					</tr>
+					<tr class = "clickable">
+						<td>AAC</td>
+						<td>AUSTRALIAN COMPANY </td>
+						<td>$1.38</td>
+						<td>+2.01</td>
+						<td>-0.36%</td>
+					</tr>
+					<tr class = "clickable">
+						<td>AAD</td>
+						<td>AUSENCO</td>
+						<td>$2.38</td>
+						<td>-0.01</td>
+						<td>-1.36%</td>
+					</tr>
+					<tr class = "clickable">
+						<td>AAX</td>
+						<td>ADELAIDE</td>
+						<td>$3.22</td>
+						<td>+0.01</td>
+						<td>+1.36%</td>
+					</tr>
+					<tr class = "clickable">
+						<td>XXD</td>
+						<td>ADITYA BIRLA</td>
+						<td>$1.02</td>
+						<td>-1.01</td>
+						<td>+2.36%</td>
+					</tr>
+					<tr class = "clickable">
+						<td>AAC</td>
+						<td>AUSTRALIAN COMPANY </td>
+						<td>$1.38</td>
+						<td>+2.01</td>
+						<td>-0.36%</td>
+					</tr>
+					<tr class = "clickable">
+						<td>AAD</td>
+						<td>AUSENCO</td>
+						<td>$2.38</td>
+						<td>-0.01</td>
+						<td>-1.36%</td>
+					</tr>
+					<tr class = "clickable">
+						<td>AAX</td>
+						<td>ADELAIDE</td>
+						<td>$3.22</td>
+						<td>+0.01</td>
+						<td>+1.36%</td>
+					</tr>
+					<tr class = "clickable">
+						<td>XXD</td>
+						<td>ADITYA BIRLA</td>
+						<td>$1.02</td>
+						<td>-1.01</td>
+						<td>+2.36%</td>
+					</tr>
+					<tr class = "clickable">
+						<td>AAC</td>
+						<td>AUSTRALIAN COMPANY </td>
+						<td>$1.38</td>
+						<td>+2.01</td>
+						<td>-0.36%</td>
+					</tr>
+					<tr class = "clickable">
+						<td>AAD</td>
+						<td>AUSENCO</td>
+						<td>$2.38</td>
+						<td>-0.01</td>
+						<td>-1.36%</td>
+					</tr>
+					<tr>
+						<td>AAX</td>
+						<td>ADELAIDE</td>
+						<td>$3.22</td>
+						<td>+0.01</td>
+						<td>+1.36%</td>
+					</tr>
+					<tr>
+						<td>XXD</td>
+						<td>ADITYA BIRLA</td>
+						<td>$1.02</td>
+						<td>-1.01</td>
+						<td>+2.36%</td>
+					</tr>
+					<tr>
+						<td>AAC</td>
+						<td>AUSTRALIAN COMPANY </td>
+						<td>$1.38</td>
+						<td>+2.01</td>
+						<td>-0.36%</td>
+					</tr>
+					<tr>
+						<td>AAD</td>
+						<td>AUSENCO</td>
+						<td>$2.38</td>
+						<td>-0.01</td>
+						<td>-1.36%</td>
+					</tr>
+					<tr>
+						<td>AAX</td>
+						<td>ADELAIDE</td>
+						<td>$3.22</td>
+						<td>+0.01</td>
+						<td>+1.36%</td>
+					</tr>
+					<tr>
+						<td>XXD</td>
+						<td>ADITYA BIRLA</td>
+						<td>$1.02</td>
+						<td>-1.01</td>
+						<td>+2.36%</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+</section>
+<script>
+		/*var coll = document.getElementsByClassName("collapsible");
+		var i;
+		
+		for (i = 0; i < coll.length; i++) {
+		  coll[i].addEventListener("click", function() {
+			this.classList.toggle("active");
+			var content = this.nextElementSibling;
+			if (content.style.display === "flex") {
+			  content.style.display = "none";
+			} else {
+			  content.style.display = "flex";
+			}
+		  });
+		}*/
+	function filter() {
+		// Declare variables 
+		var input, filter, table, tr, td, i, txtValue;
+		input = document.getElementById("myInput");
+		filter = input.value.toUpperCase();
+		table = document.getElementById("myTable");
+		tr = table.getElementsByTagName("tr");
+
+		// Loop through all table rows, and hide those who don't match the search query
+		for (i = 0; i < tr.length; i++) {
+			td = tr[i].getElementsByTagName("td")[0];
+			td1 = tr[i].getElementsByTagName("td")[1];
+			console.log(td1);
+			if (td || td1) {
+			txtValue = td.textContent || td.innerText;
+			txtValue1 = td1.textContent || td1.innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue1.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+			}
+		}
+	}
+</script>
 </body>
 </html>
