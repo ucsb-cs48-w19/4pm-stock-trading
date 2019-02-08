@@ -3,8 +3,7 @@
 
 <head>
   <link rel="stylesheet" type="text/css"  href="style.css">
-<style>
-.topnav {
+  .topnav {
   background-color: #333;
   overflow: hidden;
 }
@@ -30,7 +29,7 @@
   background-color: #4CAF50;
   color: white;
 }
-</style>
+
 
 
 
