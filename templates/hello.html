@@ -3,25 +3,30 @@
 <head>
 	<link rel="stylesheet"  type="text/css" href="{{url_for('static', filename='styles.css')}}">
 	<link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 <style>
 	.topnav {
+		font-family: 'Raleway', sans-serif;
 		background-color: #333;
 		overflow: hidden;
+		
 	}
 
 /* Style the links inside the navigation bar */
 	.topnav a {
+
 		float: left;
 		color: #f2f2f2;
 		text-align: center;
 		padding: 14px 16px;
 		text-decoration: none;
-		font-size: 17px;
+		font-size: 13px;
 	}
 
 /* Change the color of links on hover */
 	.topnav a:hover {
+		transition: .3s ease-out;
 		background-color: #ddd;
 		color: black;
 	}
@@ -31,7 +36,6 @@
 		background-color: #4CAF50;
 		color: white;
 	}
-	@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
 	html,
 	body{
 		margin: 0;
@@ -101,13 +105,7 @@
 		margin-top: 0px;
 		border: 1px solid rgba(255,255,255,0.3);
 	}
-	.collapsible {
-		
-	}
-	
-	.active, .collapsible:hover {
-		
-	}
+
 	.clickable{
 		transition: .5s ease-out;
 	}
@@ -126,9 +124,10 @@
 		background-color: #f1f1f1;
 	}
 	.header{
+		margin-top: 30px;
 		color: white;
 		text-align: center;
-		font-family: 'Julius Sans One', sans-serif;
+		font-family: 'Raleway', sans-serif;
 	}
 </style>
 <body>
@@ -138,7 +137,7 @@
 		<a href="#My Stocks">My Stocks</a>
 		<a href="#About">About</a>
 	</div>
-<h3 class = "header">STOCK LIST</h3>
+<h3 class = "header">4PM STOCK TRADING</h3>
 <section>
 	<input type="text" id="myInput" onkeyup="filter()" placeholder="Search for stocks">
 	<div class="tbl-header">
