@@ -1,5 +1,6 @@
 # 4pm-stock-trading
 # (frankTabs BRANCH)
+# UPDATE: NAVBAR WORKS WITH ERIC'S HTML TEMPLATES W/ DISPLAYED STOCKS
 
 URL to current app: https://morning-stream-28805.herokuapp.com/
 
