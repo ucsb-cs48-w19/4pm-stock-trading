@@ -23,4 +23,3 @@ def getChart(name):
     json = urlopen("https://api.iextrading.com/1.0/stock/"+ name + "/chart/1y").read()
     return json
 
-

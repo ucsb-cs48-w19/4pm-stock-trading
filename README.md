@@ -22,10 +22,17 @@ Ensure that `Flask` is installed by typing in the command
 
 This assumes that Python 2.7 and above is installed.
 
+
+Also ensure that the "iexfinance" module is installed using:
+
+`$ pip install iexfinance`
+ 
+
 ### Prerequisites
 
 * Flask (as indicated above)
 * Python 2.7 and above
+* iexfinance 0.3.5
 
 ### Installation Steps
 
