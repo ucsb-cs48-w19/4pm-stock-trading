@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template, request, url_for
+import stocks
 
 app = Flask(__name__)
 
@@ -18,7 +19,9 @@ def render_my_stocks():
 @app.route('/about')
 def render_about():
     return render_template("about.html", title = 'about')
-
+@app.route('/stocks')
+def dynamic_page():
+    return stocks.getChart("MSFT")
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 33507))
     app.run()
