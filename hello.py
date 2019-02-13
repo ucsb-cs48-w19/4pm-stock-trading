@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import liveStock
 
 app = Flask(__name__)
 
@@ -17,6 +18,10 @@ def render_my_stocks():
 @app.route('/about')
 def render_about():
     return render_template("about.html", title = 'about')
+
+@app.route('/TEST')
+def dynamic_page():
+    return liveStock.testFunct1()
 
 if __name__ == "__main__":
 	port = int(os.environ.get('PORT', 33507))
