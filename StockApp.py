@@ -19,9 +19,12 @@ def render_my_stocks():
 @app.route('/about')
 def render_about():
     return render_template("about.html", title = 'about')
+
 @app.route('/stocks')
 def dynamic_page():
-    return stocks.getChart("MSFT")
+    chart = stocks.getChart("MSFT")
+    return render_template("stock.html", title = 'stock', chart = chart, name = "MSFT")
+
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 33507))
     app.run()

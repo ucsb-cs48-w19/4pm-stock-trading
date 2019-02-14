@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet"  type="text/css" href="{{url_for('static', filename='styles.css')}}">
+  <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+
+
+<div class="topnav">
+      <a href="/">Home</a>
+      <a class="active" href="/recommended">Recommended Stocks</a>
+      <a href="/mystocks">My Stocks</a>
+      <a href="/about">About</a>
+  </div>
+<h3 class = "header">4PM STOCK TRADING</h3>
+
+<h3>{{chart}}</h3>
+
+<div>
+<head> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+
+  <script type="text/jsx" chart = {{chart}}>
+
+      /*** @jsx React.DOM */
+
+      var realPython = React.createClass({
+        render: function() {
+          return (<h2>Greetings, from Real Python!</h2>);
+        }
+      });
+
+      ReactDOM.render(
+        React.createElement(realPython, null),
+        document.getElementById('content')
+      );
+
+    </script>
+</head>  
+<body>  
+<div id="chartContainer" style="width:50%; height:20%px"></div>  
+</body>
+</div>
+</html>
+
