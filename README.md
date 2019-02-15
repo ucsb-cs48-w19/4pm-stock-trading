@@ -31,27 +31,8 @@ This app displays a list of popular stocks and allows you to choose which ones y
 
 This assumes that Python 3.6 and above is installed.
 
-Install `Flask` using this command:
-`$ pip install Flask` 
-
-Install `iexfinance` using this command:
-`$ pip install iexfinance`
-
-Install `plotly` using this command:
-`$ pip install plotly`
-
-Install `matplotlib` using this command:
-`$ pip install matplotlib`
-
-Install `numpy` using this command:
-`$ pip install numpy`
-
-Install `pandas` using this command:
-`$ pip install pandas`
-
-Install `IPython` using this command:
-`$ pip install IPython`
-
+Install all the required Python modules using this command:
+`$ pip install -r requirements.txt`
 
 ## Functionality
 
