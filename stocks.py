@@ -27,7 +27,8 @@ def getChart(name):
     answer = {}
     for dict in j:
         answer[dict['date']] = dict['open']
-    return str(answer)
+    return answer
+
 
 #    s = "{"
  #   for d in j:
