@@ -1,6 +1,7 @@
 # 4pm-stock-trading
 
 URL to current app: https://stocktrading-4pm-mvp.herokuapp.com/
+
 Travis CI to the master branch
 <a href="https://travis-ci.org/ucsb-cs48-w19/4pm-stock-trading">
 <img src="https://travis-ci.org/ucsb-cs48-w19/4pm-stock-trading?branch=master" alt="Build Status">
