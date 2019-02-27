@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="-1">
 	<link rel="stylesheet"  type="text/css" href="{{url_for('static', filename='styles.css')}}">
 	<link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
@@ -132,10 +134,10 @@
 </style>
 <body>
 	<div class="topnav">
-		<a class="active" href="#home">Home</a>
-		<a href="#Recommended Stocks">Recommended Stocks</a>
-		<a href="#My Stocks">My Stocks</a>
-		<a href="#About">About</a>
+  		<a class="active" href="/">Home</a>
+  		<a href="/recommended">Recommended Stocks</a>
+  		<a href="/mystocks">My Stocks</a>
+  		<a href="/about">About</a>
 	</div>
 <h3 class = "header">4PM STOCK TRADING</h3>
 <section>
@@ -156,173 +158,68 @@
 	<div class="tbl-content">
 			<table cellpadding="0" cellspacing="0" id = "myTable">
 				<tbody>
-					<tr class = "clickable">
-						<td>AAPL</td>
+					<tr class = "clickable" onclick = "window.location='/stockinfo?name=Apple&abbrev=AAPL'">
+						<td>AAPL </td>
 						<td>Apple </td>
 						<td>$1.38</td>
 						<td>+2.01</td>
 						<td>-0.36%</td>
 					</tr>
-					<tr class = "clickable">
+					<tr class = "clickable" onclick = "window.location='/stockinfo?name=Twilio&abbrev=TWLO'">
 						<td>TWLO</td>
 						<td>Twilio</td>
 						<td>$2.38</td>
 						<td>-0.01</td>
 						<td>-1.36%</td>
 					</tr>
-					<tr class = "clickable">
+					<tr class = "clickable" onclick = "window.location='/stockinfo?name=Facebook&abbrev=FB'">
 						<td>FB</td>
 						<td>Facebook</td>
 						<td>$3.22</td>
 						<td>+0.01</td>
 						<td>+1.36%</td>
 					</tr>
-					<tr class = "clickable">
+					<tr class = "clickable" onclick = "window.location='/stockinfo?name=Netflix&abbrev=NFLX'">
 						<td>NFLX</td>
 						<td>Netflix</td>
 						<td>$1.02</td>
 						<td>-1.01</td>
 						<td>+2.36%</td>
 					</tr>
-					<tr class = "clickable">
+					<tr class = "clickable" onclick = "window.location='/stockinfo?name=Paypal&abbrev=PYPL'">
 						<td>PYPL</td>
 						<td>Paypal </td>
 						<td>$1.38</td>
 						<td>+2.01</td>
 						<td>-0.36%</td>
 					</tr>
-					<tr class = "clickable">
-						<td>STX</td>
-						<td>Seagate</td>
-						<td>$2.38</td>
-						<td>-0.01</td>
-						<td>-1.36%</td>
-					</tr>
-					<tr class = "clickable">
-						<td>AAX</td>
-						<td>ADELAIDE</td>
-						<td>$3.22</td>
-						<td>+0.01</td>
-						<td>+1.36%</td>
-					</tr>
-					<tr class = "clickable">
-						<td>XXD</td>
-						<td>ADITYA BIRLA</td>
-						<td>$1.02</td>
-						<td>-1.01</td>
-						<td>+2.36%</td>
-					</tr>
-					<tr class = "clickable">
-						<td>AAC</td>
-						<td>AUSTRALIAN COMPANY </td>
+					<tr class = "clickable" onclick = "window.location='/stockinfo?name=Google&abbrev=GOOGL'">
+						<td>GOOGL</td>
+						<td>Google </td>
 						<td>$1.38</td>
 						<td>+2.01</td>
 						<td>-0.36%</td>
 					</tr>
-					<tr class = "clickable">
-						<td>AAD</td>
-						<td>AUSENCO</td>
-						<td>$2.38</td>
-						<td>-0.01</td>
-						<td>-1.36%</td>
-					</tr>
-					<tr class = "clickable">
-						<td>AAX</td>
-						<td>ADELAIDE</td>
-						<td>$3.22</td>
-						<td>+0.01</td>
-						<td>+1.36%</td>
-					</tr>
-					<tr class = "clickable">
-						<td>XXD</td>
-						<td>ADITYA BIRLA</td>
-						<td>$1.02</td>
-						<td>-1.01</td>
-						<td>+2.36%</td>
-					</tr>
-					<tr class = "clickable">
-						<td>AAC</td>
-						<td>AUSTRALIAN COMPANY </td>
+					<tr class = "clickable" onclick = "window.location='/stockinfo?name=Tesla&abbrev=TSLA'">
+						<td>TSLA</td>
+						<td>Tesla </td>
 						<td>$1.38</td>
 						<td>+2.01</td>
 						<td>-0.36%</td>
 					</tr>
-					<tr class = "clickable">
-						<td>AAD</td>
-						<td>AUSENCO</td>
-						<td>$2.38</td>
-						<td>-0.01</td>
-						<td>-1.36%</td>
-					</tr>
-					<tr class = "clickable">
-						<td>AAX</td>
-						<td>ADELAIDE</td>
-						<td>$3.22</td>
-						<td>+0.01</td>
-						<td>+1.36%</td>
-					</tr>
-					<tr class = "clickable">
-						<td>XXD</td>
-						<td>ADITYA BIRLA</td>
-						<td>$1.02</td>
-						<td>-1.01</td>
-						<td>+2.36%</td>
-					</tr>
-					<tr class = "clickable">
-						<td>AAC</td>
-						<td>AUSTRALIAN COMPANY </td>
+					<tr class = "clickable" onclick = "window.location='/stockinfo?name=Amazon&abbrev=AMZN'">
+						<td>AMZN</td>
+						<td>Amazon </td>
 						<td>$1.38</td>
 						<td>+2.01</td>
 						<td>-0.36%</td>
 					</tr>
-					<tr class = "clickable">
-						<td>AAD</td>
-						<td>AUSENCO</td>
-						<td>$2.38</td>
-						<td>-0.01</td>
-						<td>-1.36%</td>
-					</tr>
-					<tr>
-						<td>AAX</td>
-						<td>ADELAIDE</td>
-						<td>$3.22</td>
-						<td>+0.01</td>
-						<td>+1.36%</td>
-					</tr>
-					<tr>
-						<td>XXD</td>
-						<td>ADITYA BIRLA</td>
-						<td>$1.02</td>
-						<td>-1.01</td>
-						<td>+2.36%</td>
-					</tr>
-					<tr>
-						<td>AAC</td>
-						<td>AUSTRALIAN COMPANY </td>
+					<tr class = "clickable" onclick = "window.location='/stockinfo?name=Microsoft&abbrev=MSFT'">
+						<td>MSFT</td>
+						<td>Microsoft</td>
 						<td>$1.38</td>
 						<td>+2.01</td>
 						<td>-0.36%</td>
-					</tr>
-					<tr>
-						<td>AAD</td>
-						<td>AUSENCO</td>
-						<td>$2.38</td>
-						<td>-0.01</td>
-						<td>-1.36%</td>
-					</tr>
-					<tr>
-						<td>AAX</td>
-						<td>ADELAIDE</td>
-						<td>$3.22</td>
-						<td>+0.01</td>
-						<td>+1.36%</td>
-					</tr>
-					<tr>
-						<td>XXD</td>
-						<td>ADITYA BIRLA</td>
-						<td>$1.02</td>
-						<td>-1.01</td>
-						<td>+2.36%</td>
 					</tr>
 				</tbody>
 			</table>

@@ -1,1 +1,1 @@
-web: gunicorn -b :$PORT helloworld:app
+web: gunicorn -b :$PORT StockApp:app
