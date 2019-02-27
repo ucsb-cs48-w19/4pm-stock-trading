@@ -158,69 +158,20 @@
 	<div class="tbl-content">
 			<table cellpadding="0" cellspacing="0" id = "myTable">
 				<tbody>
-					<tr class = "clickable" onclick = "window.location='/stockinfo?name=Apple&abbrev=AAPL'">
-						<td>AAPL </td>
-						<td>Apple </td>
-						<td>$1.38</td>
-						<td>+2.01</td>
-						<td>-0.36%</td>
-					</tr>
-					<tr class = "clickable" onclick = "window.location='/stockinfo?name=Twilio&abbrev=TWLO'">
-						<td>TWLO</td>
-						<td>Twilio</td>
-						<td>$2.38</td>
-						<td>-0.01</td>
-						<td>-1.36%</td>
-					</tr>
-					<tr class = "clickable" onclick = "window.location='/stockinfo?name=Facebook&abbrev=FB'">
-						<td>FB</td>
-						<td>Facebook</td>
-						<td>$3.22</td>
-						<td>+0.01</td>
-						<td>+1.36%</td>
-					</tr>
-					<tr class = "clickable" onclick = "window.location='/stockinfo?name=Netflix&abbrev=NFLX'">
-						<td>NFLX</td>
-						<td>Netflix</td>
-						<td>$1.02</td>
-						<td>-1.01</td>
-						<td>+2.36%</td>
-					</tr>
-					<tr class = "clickable" onclick = "window.location='/stockinfo?name=Paypal&abbrev=PYPL'">
-						<td>PYPL</td>
-						<td>Paypal </td>
-						<td>$1.38</td>
-						<td>+2.01</td>
-						<td>-0.36%</td>
-					</tr>
-					<tr class = "clickable" onclick = "window.location='/stockinfo?name=Google&abbrev=GOOGL'">
-						<td>GOOGL</td>
-						<td>Google </td>
-						<td>$1.38</td>
-						<td>+2.01</td>
-						<td>-0.36%</td>
-					</tr>
-					<tr class = "clickable" onclick = "window.location='/stockinfo?name=Tesla&abbrev=TSLA'">
-						<td>TSLA</td>
-						<td>Tesla </td>
-						<td>$1.38</td>
-						<td>+2.01</td>
-						<td>-0.36%</td>
-					</tr>
-					<tr class = "clickable" onclick = "window.location='/stockinfo?name=Amazon&abbrev=AMZN'">
-						<td>AMZN</td>
-						<td>Amazon </td>
-						<td>$1.38</td>
-						<td>+2.01</td>
-						<td>-0.36%</td>
-					</tr>
-					<tr class = "clickable" onclick = "window.location='/stockinfo?name=Microsoft&abbrev=MSFT'">
-						<td>MSFT</td>
-						<td>Microsoft</td>
-						<td>$1.38</td>
-						<td>+2.01</td>
-						<td>-0.36%</td>
-					</tr>
+				<script language="javascript" type="text/javascript">
+					var names = {{ stocknames|tojson }};
+					var tickers = {{ stocktickers|tojson }};
+					for (var a=0; a < names.length; a++) {
+						document.write("<tr class = \"clickable\" onclick = \"window.location='/stockinfo?name=" + names[a] + "&abbrev=" + tickers[a] + "'\">");
+							document.write("<td>"+names[a]+"</td>");
+							document.write("<td>"+tickers[a]+"</td>");
+							// put the rest of the data here
+							document.write("<td>$1.38</td>");
+							document.write("<td>+2.01</td>");
+							document.write("<td>-0.36%</td>");
+						document.write("</tr>");
+					}
+				</script>
 				</tbody>
 			</table>
 		</div>

@@ -7,3 +7,5 @@ numpy==1.16.1
 pandas==0.24.1
 ipython==7.2.0
 pytest
+beautifulsoup4-4.7.1
+lxml-4.3.1
