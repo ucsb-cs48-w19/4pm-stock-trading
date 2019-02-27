@@ -19,6 +19,7 @@ def render_my_stocks():
 @app.route('/about')
 def render_about():
     return render_template("about.html", title = 'about')
+
 @app.route('/stocks')
 def dynamic_page():
     return stocks.getChart("MSFT")
