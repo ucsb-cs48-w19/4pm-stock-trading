@@ -37,98 +37,103 @@
     color: white;
   }
   html,
-  body{
-    margin: 0;
-    height:100%;
-    background: rgb(12,11,37);
-    background: linear-gradient(130deg, rgba(12,11,37,1) 0%, rgba(1,8,22,1) 100%);
-    background-size: cover;
-  }
-  section{
-    margin: 50px;
-    font-family: 'Julius Sans One', sans-serif;
-    margin-top: 0px;
-  }
-  #myInput {
-    background: rgba(255,255,255,0.0);
-    color: white;
-    background-image: url("{{url_for('static', filename='search.png')}}"); /* Add a search icon to input */
-    background-size: 20px 20px;
-    background-position: 10px 12px; /* Position the search icon */
-    background-repeat: no-repeat; /* Do not repeat the icon image */
-    width: inherit; 
-    border: none;
-    border-bottom: 2px solid #aaa;
-    outline: none;
-    font-size: 16px; /* Increase font-size */
-    padding: 12px 20px 5px 40px; /* Add some padding */ 
-    margin-bottom: 12px; /* Add some space below the input */
-    transition: .3s ease-out;
-    -webkit-box-shadow: 0 2px 10px 1px rgba(0,0,0,0.5);
-      box-shadow: 0 2px 10px 1px rgba(0,0,0,0.5);
-  }
-  #myInput:focus{
-    
-    border-bottom: 2px solid white;
-  }
-  #myInput:focus::placeholder{
-    transition: .3s ease-out;
-    color: white;
-  }
-  table{
-    width:100%;
-    table-layout: fixed;
-  }
-  .tbl-header{
-    background-color: rgba(255,255,255,0.3);
-  }
-  th{
-    padding: 20px 15px;
-    text-align: left;
-    font-weight: 500;
-    font-size: 12px;
-    color: #fff;
-    text-transform: uppercase;
-  }
-  td{
-    padding: 15px;
-    text-align: left;
-    vertical-align:middle;
-    font-weight: 300;
-    font-size: 12px;
-    color: #fff;
-    border-bottom: solid 1px rgba(255,255,255,0.1);
-  }
-  .tbl-content{
-    height:400px;
-    overflow-x:auto;
-    margin-top: 0px;
-    border: 1px solid rgba(255,255,255,0.3);
-  }
+	body{
+		margin: 0;
+		height:100%;
+		background: #fcfcfc;
+		background-size: cover;
+	}
+	section{
+		margin: 50px;
+		font-family: 'Raleway', sans-serif;
+		margin-top: 0px;
+	}
+	.dashboard{
+		padding: 30px;
+		padding-left:5%;
+		padding-right:5%;
+		margin-left: 15%;
+		margin-right: 15%;
+		background: white;
+		-webkit-box-shadow: 0px 1px 2px 0px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  		-moz-box-shadow:    0px 1px 2px 0px #ccc;  /* Firefox 3.5 - 3.6 */
+  		box-shadow:         0px 1px 2px 0px #ccc;
+	}
+	#myInput {
+		background: rgba(255,255,255,0.0);
+		color: black;
+		background-image: url("{{url_for('static', filename='search.png')}}"); /* Add a search icon to input */
+		background-size: 20px 20px;
+		background-position: 10px 12px; /* Position the search icon */
+		background-repeat: no-repeat; /* Do not repeat the icon image */
+		width: inherit; 
+		border: none;
+		border-bottom: 1px solid #aaa;
+		outline: none;
+		font-size: 16px; /* Increase font-size */
+		padding: 12px 20px 5px 40px; /* Add some padding */ 
+		margin-bottom: 12px; /* Add some space below the input */
+		transition: .3s ease-out;
+	}
+	#myInput:focus{
+		
+	}
+	#myInput:focus::placeholder{
+		transition: .3s ease-out;
+		color: #4CAF50;
+	}
+	table{
+		width:100%;
+		table-layout: fixed;
+	}
+	.tbl-header{
+  	background-color: rgba(255,255,255,0.3);
+ 	}
+	th{
+		padding: 20px 15px;
+		text-align: left;
+		font-weight: 500;
+		font-size: 12px;
+		color: black;
+	}
+	td{
+		padding: 15px;
+		text-align: left;
+		vertical-align:middle;
+		font-weight: 300;
+		font-size: 12px;
+		color: black;
+		border-bottom: solid 1px #efefef;
+	}
+	.tbl-content{
+		height:400px;
+		overflow-x:auto;
+		margin-top: 0px;
+		border: 1px solid rgba(255,255,255,0.3);
+	}
 
-  .clickable{
-    transition: .5s ease-out;
-  }
-  .clickable:hover {
-    color: white;
-    background-color: rgba(255,255,255,.5);
-    
-  }
-  
-  .content {
-    width: auto;
-    height: auto;
-    padding: 0 18px;
-    display: none;
-    overflow: hidden;
-    background-color: #f1f1f1;
-  }
-  .header{
-    margin-top: 30px;
-    color: white;
-    text-align: center;
-    font-family: 'Raleway', sans-serif;
-  }
+	.clickable{
+		transition: .5s ease-out;
+	}
+	.clickable:hover {
+		background-color: #f7f7f7;
+    cursor: pointer;
+	}
+	
+	.content {
+		width: auto;
+		height: auto;
+		padding: 0 18px;
+		display: none;
+		overflow: hidden;
+		background-color: #f1f1f1;
+	}
+	.header{
+		margin-top: 30px;
+		color: white;
+		text-align: center;
+		font-family: 'Raleway', sans-serif;
+	}
 </style>
 <body>
   <div class="topnav">
@@ -138,7 +143,8 @@
       <a href="/about">About</a>
   </div>
 <h3 class = "header">4PM STOCK TRADING</h3>
-<section>
+<section class = "dashboard">
+  <h1>Recommended</h1>
   <input type="text" id="myInput" onkeyup="filter()" placeholder="Search for stocks">
   <div class="tbl-header">
       <table cellpadding="0" cellspacing="0">
@@ -149,7 +155,7 @@
             <th>Price</th>
             <th>Change</th>
             <th>Change %</th>
-            <th>Rating</th>th>
+            <th>Rating</th>
           </tr>
         </thead>
       </table>
