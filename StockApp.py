@@ -24,6 +24,7 @@ def render_my_stocks():
 
 @app.route('/about')
 def render_about():
+<<<<<<< HEAD
 	return render_template("about.html", title = 'about')
 
 @app.route('/stocks') #test function that shows microsoft data, currently not used
@@ -42,6 +43,14 @@ def showInfo():
 	graph.makeGraph(stockname, stockabbrev, data)
 	sheet = stockname+"-graph.html"
 	return render_template(sheet, title = 'stockinfo')
+=======
+    return render_template("about.html", title = 'about')
+
+@app.route('/stocks')
+def dynamic_page():
+    chart = stocks.getChart("MSFT")
+    return render_template("stock.html", title = 'stock', chart = chart, name = "MSFT")
+>>>>>>> 5cec51dc7ab9214cfcb451acd291d3f01a301c75
 
 if __name__ == "__main__":
 	port = int(os.environ.get('PORT', 33507))
