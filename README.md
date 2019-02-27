@@ -47,6 +47,12 @@ Deploy your `StockApp.py` script by executing the command
 
 The site is deployed locally at http://localhost:5000/.
 
+Alternatively, you can run
+
+`python3 StockApp.py`
+
+and the app will deploy at the URL listed above.
+
 ## Known Problems
 
 We are currently using Plotly to construct our graphs. However, every free account has a limit of 25 public graphs available. So, we must create a new account and input the new information into the top of 'graph.py' every time we run out of graphs for that account.
