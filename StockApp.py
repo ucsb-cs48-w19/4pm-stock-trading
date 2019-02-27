@@ -28,7 +28,7 @@ def render_my_stocks():
 
 @app.route('/about')
 def render_about():
-	return render_template("about.html", title = 'about')
+    return render_template("about.html", title = 'about')
 
 @app.route('/stocks') #test function that shows microsoft data, currently not used
 def dynamic_page():
