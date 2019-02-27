@@ -70,4 +70,4 @@ src="''' + plot_url + '''.embed?width=800&height=550"></iframe>
 	f.close()
 
 if __name__ == "__main__":
-	makeGraph("Apple", "AAPL", {"2017-01-01": 11, "2017-01-02": 6, "2017-01-03": 7.5})
+	makeGraph("Apple", "AAPL", {"2017-01-01": 11, "2017-01-02": 6, "2017-01-03": 7.5}) #default graph
