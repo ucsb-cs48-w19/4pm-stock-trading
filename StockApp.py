@@ -4,6 +4,7 @@ import os
 from flask import Flask, render_template, request, url_for
 import stocks
 import graph
+import stocklist
 from glob import glob
 
 app = Flask(__name__)
@@ -12,7 +13,10 @@ app = Flask(__name__)
 def home():
 	for file in glob("./templates/*-graph.html"):
 		os.remove(file)
-	return render_template("home.html", title = 'home')
+	names = []
+	tickers = []
+	stocklist.save_stock_tickers(names, tickers)
+	return render_template("home.html", title = 'home', stocknames = names, stocktickers = tickers)
 
 @app.route('/recommended')
 def render_recommended():
@@ -24,7 +28,7 @@ def render_my_stocks():
 
 @app.route('/about')
 def render_about():
-	return render_template("about.html", title = 'about')
+    return render_template("about.html", title = 'about')
 
 @app.route('/stocks') #test function that shows microsoft data, currently not used
 def dynamic_page():
