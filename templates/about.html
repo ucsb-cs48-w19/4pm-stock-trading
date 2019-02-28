@@ -6,6 +6,7 @@
   <link rel="stylesheet" type="text/css"  href="style.css">
 <style>
 .topnav {
+  font-family: 'Raleway', sans-serif;
   background-color: #333;
   overflow: hidden;
 }
@@ -17,7 +18,7 @@
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 13px;
 }
 
 /* Change the color of links on hover */
@@ -52,13 +53,23 @@ div.desc {
   padding: 15px;
   text-align: center;
 }
+html,
+body{
+    margin: 0;
+    height:100%;
+    background: #fcfcfc;
+    background-size: cover;
+  }
+section{
+    margin: 50px;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 0px;
+  }
 </style>
-
 
 
 </head>
 <body>
-
 <div class="topnav">
   <a href="/">Home</a>
   <a href="/recommended">Recommended Stocks</a>
@@ -66,9 +77,13 @@ div.desc {
   <a class="active" href="/about">About</a>
 </div>
 
-<p>This app displays a list of popular stocks and allows you to choose which ones you want to learn more about. Once you choose a stock, you will be able to see important information about it such as its current price per unit and a graph of its recent price history. In addition, the app will allow users to upvote/downvote stocks based on their opinion</p>
+<body style="background-color:rgb(252, 252, 252);">
+<font size = "4">
+<p style = "font-family: Raleway, sans-serif">This app displays a list of popular stocks and allows you to choose which ones you want to learn more about. Once you choose a stock, you will be able to see\
+ important information about it such as its current price per unit and a graph of its recent price history. In addition, the app will recommend stocks for you to buy based on your interests and specifica\
+tions.</p>
 
-<br>
+
 <p style="font-size:50px;">Team 4PM Stock Trading </p>
 
 <div class = "gallery">
@@ -102,4 +117,5 @@ div.desc {
 </div>
 
 </body>
+</font>
 </html>
