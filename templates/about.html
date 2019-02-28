@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -30,6 +31,27 @@
   background-color: #4CAF50;
   color: white;
 }
+/* style the images with gallery style */
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: 200;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
 </style>
 
 
@@ -44,6 +66,40 @@
   <a class="active" href="/about">About</a>
 </div>
 
-<p>This app displays a list of popular stocks and allows you to choose which ones you want to learn more about. Once you choose a stock, you will be able to see important information about it such as its current price per unit and a graph of its recent price history. In addition, the app will recommend stocks for you to buy based on your interests and specifications.</p>
+<p>This app displays a list of popular stocks and allows you to choose which ones you want to learn more about. Once you choose a stock, you will be able to see important information about it such as its current price per unit and a graph of its recent price history. In addition, the app will allow users to upvote/downvote stocks based on their opinion</p>
+
+<br>
+<p style="font-size:50px;">Team 4PM Stock Trading </p>
+
+<div class = "gallery">
+<img src="/static/wesley.jpg" alt="wesley" width="200" height="200">
+<div class = "desc">Wesley Lu 3rd year Computer Science major</div>
+</div>
+
+<div class = "gallery">
+<img src="/static/andrew.jpg" alt="andrew"  width="200" height="200">
+<div class = "desc" >Andrew Luo 2nd year Computer Science major</div>
+</div>
+
+<div class = "gallery">
+<img src="/static/frank.jpg" alt="frank"  width="200" height="200">
+<div class = "desc">Frank Lee 3rd year Computer Science and Physics major</div>
+</div>
+
+<div class = "gallery">
+<img src="/static/shirlyn.jpg" alt="shirlyn"  width="200" height="200">
+<div class = "desc">Shirlyn Tang 2nd year Computer Science major</div>
+</div>
+
+<div class = "gallery">
+<img src="/static/sean.jpg" alt="sean"  width="200" height="200">
+<div class = "desc">Sean Park 2nd year Computer Science  major</div>
+</div>
+
+<div class = "gallery">
+<img src="/static/eric.jpg" alt="eric"  width="200" height="200">
+<div class = "desc":>Eric Shen 3rd year Computer Science major</div>
+</div>
+
 </body>
 </html>

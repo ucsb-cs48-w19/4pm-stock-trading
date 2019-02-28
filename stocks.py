@@ -31,4 +31,3 @@ def getChart(name):
  #   s += "}"    
  #   return s    
 
->>>>>>> fef6f3d65879a30aa9f82a0865157654ae913559
