@@ -56,7 +56,7 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote):
 	# data=go.Data([xy_data, mov_avg])
 	# layout=go.Layout(title="First Plot", xaxis={'title':'x1'}, yaxis={'title':'x2'})
 	# figure=go.Figure(data=data,layout=layout)
-	py.iplot(figure, filename='pyguide_1')
+	# py.iplot(figure, filename='pyguide_1')
 
 	py.iplot(data, filename=stock_name + ' stock moving average')
 
