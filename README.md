@@ -1,6 +1,6 @@
 # 4pm-stock-trading
 
-URL to current app: https://stocktrading-4pm-mvp.herokuapp.com/
+URL to current app: https://stocktrading-4pm.herokuapp.com/
 
 Travis CI to the master branch:
 <a href="https://travis-ci.org/ucsb-cs48-w19/4pm-stock-trading">
@@ -31,6 +31,8 @@ This app displays a list of popular stocks and allows you to choose which ones y
 * numpy version 1.16.1
 * pandas version 0.24.1
 * ipython version 7.2.0
+* beautifulsoup4 version 4.7.1
+* lxml version 4.3.1
 
 ### Installation Steps
 
