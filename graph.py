@@ -9,7 +9,7 @@ from datetime import date as dt_date
 import plotly.plotly as py
 import plotly.tools as plotly_tools
 import plotly.graph_objs as go
-plotly_tools.set_credentials_file(username='shirlyn', api_key='6xWgJbxX7mvqlJf5M3gx')
+plotly_tools.set_credentials_file(username='franklee26', api_key='p8wmiuKCztT9H1esduFY')
 
 import os
 import tempfile
@@ -53,6 +53,10 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote):
 	mov_avg = go.Scatter( x=x[5:-4], y=ma[5:-4], \
 					  line=dict(width=2,color='red'), name='Moving average' )
 	data = [xy_data, mov_avg]
+	# data=go.Data([xy_data, mov_avg])
+	# layout=go.Layout(title="First Plot", xaxis={'title':'x1'}, yaxis={'title':'x2'})
+	# figure=go.Figure(data=data,layout=layout)
+	py.iplot(figure, filename='pyguide_1')
 
 	py.iplot(data, filename=stock_name + ' stock moving average')
 
