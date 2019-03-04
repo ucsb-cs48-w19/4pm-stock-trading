@@ -15,8 +15,9 @@ def home():
 		os.remove(file)
 	names = []
 	tickers = []
-	stocklist.save_stock_tickers(names, tickers)
-	return render_template("home.html", title = 'home', stocknames = names, stocktickers = tickers)
+	prices = []
+	stocklist.save_stock_tickers(names, tickers, prices)
+	return render_template("home.html", title = 'home', stocknames = names, stocktickers = tickers, prices = prices)
 
 @app.route('/recommended')
 def render_recommended():
@@ -43,7 +44,8 @@ def showInfo():
 	stockname = request.args.get('name')
 	stockabbrev = request.args.get('abbrev')
 	data = stocks.getChart(stockabbrev)
-	graph.makeGraph(stockname, stockabbrev, data)
+	quote = stocks.getQuote(stockabbrev)
+	graph.makeGraph(stockname, stockabbrev, data, quote)
 	sheet = stockname+"-graph.html"
 	return render_template(sheet, title = 'stockinfo')
 

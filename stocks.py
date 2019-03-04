@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request
 from iexfinance.stocks import Stock
 from urllib.request import urlopen
+import json
+import re
+
 
 import json
 
@@ -31,3 +34,9 @@ def getChart(name):
  #   s += "}"    
  #   return s    
 
+def getQuote(name):
+	name = re.sub(r'[-]', '.', name)
+	print(name)
+	json1 = urlopen("https://api.iextrading.com/1.0/stock/"+ name + "/quote").read()
+	j = json.loads(json1) 
+	return j
