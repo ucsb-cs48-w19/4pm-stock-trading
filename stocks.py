@@ -5,10 +5,8 @@ import json
 import re
 
 
-#class Stock:                                                                                                                                                                                               
-#   def __init__(self,name):                                                                                                                                                                                
-#       self.price =                                                                                                                                                                                        
-#       self.name  = name                                                                                                                                                                                   
+import json
+
 
 
 
@@ -19,8 +17,7 @@ Google = Stock("GOOGL")
 Microsoft = Stock("MSFT")
 Amazon = Stock("AMZN")
 
-
-#print(Stock1.name)                                                                                                                                                                                         
+  
 
 def getChart(name):
     json1 = urlopen("https://api.iextrading.com/1.0/stock/"+ name + "/chart/1y").read()
