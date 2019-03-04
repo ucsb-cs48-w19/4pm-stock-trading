@@ -17,17 +17,27 @@ os.environ['MPLCONFIGDIR'] = tempfile.mkdtemp()
 import matplotlib.pyplot as plt
 
 from IPython.display import HTML
+import stocks
 
 
 def moving_average(interval, window_size):
 	window = np.ones(int(window_size))/float(window_size)
 	return np.convolve(interval, window, 'same')
 
-def makeGraph(stock_name, stock_abbrev, quotes):
+def makeGraph(stock_name, stock_abbrev, quotes, quote):
 	x = []
 	y = []
 	values = []
 	ma = []
+
+	price = str(quote['latestPrice'])
+	op = str(quote['open'])
+	close = str(quote['close'])	
+	pe = str(quote['peRatio'])
+	cap = str(quote['marketCap'])
+	volume = str(quote['latestVolume'])
+	w52high = str(quote['week52High'])
+	w52low = str(quote['week52Low'])
 
 	if len(quotes) == 0:
 		print ("quotes empty")
@@ -123,6 +133,17 @@ def makeGraph(stock_name, stock_abbrev, quotes):
 		<h1>''' + stock_name + ' (' +stock_abbrev + ''') stock in the past year</h1>
 		<iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" \
 src="''' + plot_url + '''.embed?width=800&height=550"></iframe>
+	</section>
+	<section>
+		<p>''' + 'Information for ' + stock_abbrev + '''</p>
+		<p>''' + 'Current Price: $' + price + '''</p>
+		<p>''' + 'Open: $' + op + '''</p>
+		<p>''' + 'Close: $' + close + '''</p>
+		<p>''' + 'PE ratio: ' + pe + '''<p>
+		<p>''' + 'Latest Volume: ' + volume + '''</p>
+		<p>''' + '52 Week High: $' + w52high + '''</p>
+		<p>''' + '52 Week Low: $' + w52low + '''</p>
+		<p>''' + 'Market Cap: $' + cap + '''</p>
 	</section>
 	</body>
 </html>'''
