@@ -9,7 +9,7 @@ from datetime import date as dt_date
 import plotly.plotly as py
 import plotly.tools as plotly_tools
 import plotly.graph_objs as go
-plotly_tools.set_credentials_file(username='shirlyn', api_key='6xWgJbxX7mvqlJf5M3gx')
+plotly_tools.set_credentials_file(username='franklee26', api_key='p8wmiuKCztT9H1esduFY')
 
 import os
 import tempfile
@@ -17,17 +17,27 @@ os.environ['MPLCONFIGDIR'] = tempfile.mkdtemp()
 import matplotlib.pyplot as plt
 
 from IPython.display import HTML
+import stocks
 
 
 def moving_average(interval, window_size):
 	window = np.ones(int(window_size))/float(window_size)
 	return np.convolve(interval, window, 'same')
 
-def makeGraph(stock_name, stock_abbrev, quotes):
+def makeGraph(stock_name, stock_abbrev, quotes, quote):
 	x = []
 	y = []
 	values = []
 	ma = []
+
+	price = str(quote['latestPrice'])
+	op = str(quote['open'])
+	close = str(quote['close'])	
+	pe = str(quote['peRatio'])
+	cap = str(quote['marketCap'])
+	volume = str(quote['latestVolume'])
+	w52high = str(quote['week52High'])
+	w52low = str(quote['week52Low'])
 
 	if len(quotes) == 0:
 		print ("quotes empty")
@@ -43,6 +53,10 @@ def makeGraph(stock_name, stock_abbrev, quotes):
 	mov_avg = go.Scatter( x=x[5:-4], y=ma[5:-4], \
 					  line=dict(width=2,color='red'), name='Moving average' )
 	data = [xy_data, mov_avg]
+	# data=go.Data([xy_data, mov_avg])
+	# layout=go.Layout(title="First Plot", xaxis={'title':'x1'}, yaxis={'title':'x2'})
+	# figure=go.Figure(data=data,layout=layout)
+	# py.iplot(figure, filename='pyguide_1')
 
 	py.iplot(data, filename=stock_name + ' stock moving average')
 
@@ -123,6 +137,17 @@ def makeGraph(stock_name, stock_abbrev, quotes):
 		<h1>''' + stock_name + ' (' +stock_abbrev + ''') stock in the past year</h1>
 		<iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" \
 src="''' + plot_url + '''.embed?width=800&height=550"></iframe>
+	</section>
+	<section>
+		<p>''' + 'Information for ' + stock_abbrev + '''</p>
+		<p>''' + 'Current Price: $' + price + '''</p>
+		<p>''' + 'Open: $' + op + '''</p>
+		<p>''' + 'Close: $' + close + '''</p>
+		<p>''' + 'PE ratio: ' + pe + '''<p>
+		<p>''' + 'Latest Volume: ' + volume + '''</p>
+		<p>''' + '52 Week High: $' + w52high + '''</p>
+		<p>''' + '52 Week Low: $' + w52low + '''</p>
+		<p>''' + 'Market Cap: $' + cap + '''</p>
 	</section>
 	</body>
 </html>'''

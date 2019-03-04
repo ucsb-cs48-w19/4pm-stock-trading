@@ -154,9 +154,7 @@
 					<tr>
 						<th>Code</th>
 						<th>Company</th>
-						<th>Price</th>
-						<th>Change</th>
-						<th>Change %</th>
+						<th></th>
 					</tr>
 				</thead>
 			</table>
@@ -167,14 +165,13 @@
 				<script language="javascript" type="text/javascript">
 					var names = {{ stocknames|tojson }};
 					var tickers = {{ stocktickers|tojson }};
+					var temp = "Click to learn more.";
 					for (var a=0; a < names.length; a++) {
 						document.write("<tr class = \"clickable\" onclick = \"window.location='/stockinfo?name=" + names[a] + "&abbrev=" + tickers[a] + "'\">");
 							document.write("<td>"+tickers[a]+"</td>");
 							document.write("<td>"+names[a]+"</td>");
 							// put the rest of the data here
-							document.write("<td>$1.38</td>");
-							document.write("<td>+2.01</td>");
-							document.write("<td>-0.36%</td>");
+							document.write('<td>'+temp.fontcolor('blue') +'</td>');
 						document.write("</tr>");
 					}
 				</script>
