@@ -1,8 +1,12 @@
+
 <!DOCTYPE html>
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css"  href="style.css">
+  
+  <link rel="stylesheet"  type="text/css" href="{{url_for('static', filename='styles.css')}}">
+  <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 <style>
 .topnav {
   font-family: 'Raleway', sans-serif;
@@ -31,14 +35,50 @@
   background-color: #4CAF50;
   color: white;
 }
+/* style the images with gallery style */
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+}
+
+.dashboard
+{
+    padding: 30px;
+    padding-left:5%;
+    height: 120%;
+                padding-right:5%;
+                margin-top: 5%; 
+               margin-left: 15%;
+                margin-right: 15%;
+                width: 50%;
+                background: white;
+                -webkit-box-shadow: 0px 1px 2px 0px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+                -moz-box-shadow:    0px 1px 2px 0px #ccc;  /* Firefox 3.5 - 3.6 */
+                box-shadow:         0px 1px 2px 0px #ccc;
+}
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: 200;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
 html,
-  body{
+body{
     margin: 0;
     height:100%;
     background: #fcfcfc;
     background-size: cover;
   }
-  section{
+section{
     margin: 50px;
     font-family: 'Raleway', sans-serif;
     margin-top: 0px;
@@ -46,19 +86,60 @@ html,
 </style>
 
 
-
 </head>
 <body>
-
 <div class="topnav">
   <a href="/">Home</a>
   <a href="/recommended">Recommended Stocks</a>
   <a href="/mystocks">My Stocks</a>
   <a class="active" href="/about">About</a>
 </div>
+
+
+<section class = "dashboard">
+
+
+
 <body style="background-color:rgb(252, 252, 252);">
 <font size = "4">
-<p style = "font-family: Raleway, sans-serif">This app displays a list of popular stocks and allows you to choose which ones you want to learn more about. Once you choose a stock, you will be able to see important information about it such as its current price per unit and a graph of its recent price history. In addition, the app will recommend stocks for you to buy based on your interests and specifications.</p>
+<h1>About</h1>
+<p style = "font-family: Raleway, sans-serif">This app displays a list of popular stocks and allows you to choose which ones you want to learn more about. Once you choose a stock, you will be able to see important information about it such as its current price per unit and a graph of its recent price history. </p>
+
+
+<p style="font-size:30px;">Team 4PM Stock Trading </p> 
+
+<div class = "gallery">
+<img src="/static/wesley.jpg" alt="wesley" width="200" height="200">
+<div class = "desc">Wesley Lu<br>3rd year<br>Computer Science major</div>
+</div>
+
+<div class = "gallery">
+<img src="/static/andrew.jpg" alt="andrew"  width="200" height="200">
+<div class = "desc" >Andrew Luo<br>2nd year<br>Computer Science major</div>
+</div>
+
+<div class = "gallery">
+<img src="/static/frank.jpg" alt="frank"  width="200" height="200">
+<div class = "desc">Frank Lee<br>3rd year<br>Computer Science and Physics major</div>
+</div>
+<br>
+<div class = "gallery">
+<img src="/static/shirlyn.jpg" alt="shirlyn"  width="200" height="200">
+<div class = "desc">Shirlyn Tang<br>2nd year<br>Computer Science major</div>
+</div>
+
+<div class = "gallery">
+<img src="/static/sean.jpg" alt="sean"  width="200" height="200">
+<div class = "desc">Sean Park<br>2nd year<br>Computer Science  major</div>
+</div>
+
+<div class = "gallery">
+<img src="/static/eric.jpg" alt="eric"  width="200" height="200">
+<div class = "desc":>Eric Shen<br>3rd year<br>Computer Science major</div>
+</div>
+
 </body>
 </font>
+
+</section>
 </html>
