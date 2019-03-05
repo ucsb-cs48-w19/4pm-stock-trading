@@ -49,6 +49,10 @@ def showInfo():
 	sheet = stockname+"-graph.html"
 	return render_template(sheet, title = 'stockinfo')
 
+
+@app.route('/google973af8c591e84ad7.html')
+def render_ver():
+	return render_template("google973af8c591e84ad7.html", title = 'verification')
 if __name__ == "__main__":
 	port = int(os.environ.get('PORT', 33507))
 	app.run()
