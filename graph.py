@@ -54,10 +54,10 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote):
 					  line=dict(width=2,color='red'), name='Moving average' )
 	# data = [xy_data, mov_avg]
 	# trying to add annotation to graph
-	# set to 85% heigh (kinda weird... but it centres alright)
+	# Sets the text at x,y and so I off set it proportional to the 40% of the max range. Works surpisingly well!
 	# ISSUE: Can't add $ symbol to string! The html is doing something weird with it
 	annotations = []
-	annotations.append(dict(xref='paper', x=1.01, y=0.85*max(y), 
+	annotations.append(dict(xref='paper', x=1.01, y=max(y) - 0.4 * (max(y) - min(y)), 
                                   xanchor='left', yanchor='middle',
                                   text='<b>Information on ' + stock_abbrev + "\nPrice: " + price + "\nOpen: " + op + "\nClose: " + close + "\nPE: " + pe +
                                   "\nCAP: " + cap + "\nVolume: " + volume + "\nw52high: " + w52high + "\nw52low: " + w52low + "</b>",
