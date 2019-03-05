@@ -9,7 +9,7 @@ from datetime import date as dt_date
 import plotly.plotly as py
 import plotly.tools as plotly_tools
 import plotly.graph_objs as go
-plotly_tools.set_credentials_file(username='franklee26', api_key='p8wmiuKCztT9H1esduFY')
+plotly_tools.set_credentials_file(username='franklee', api_key='MxDFG8cQ59WifpMhd9d3')
 
 import os
 import tempfile
@@ -49,18 +49,28 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote):
 		y = list(map(float,values))
 		ma = moving_average(y, 10)
 
-	xy_data = go.Scatter( x=x, y=y, mode='markers', marker=dict(size=4), name=stock_abbrev )
+	xy_data = go.Scatter( x=x, y=y, mode='markers', marker=dict(size=4), name=stock_abbrev)
 	mov_avg = go.Scatter( x=x[5:-4], y=ma[5:-4], \
 					  line=dict(width=2,color='red'), name='Moving average' )
-	data = [xy_data, mov_avg]
-	# data=go.Data([xy_data, mov_avg])
-	# layout=go.Layout(title="First Plot", xaxis={'title':'x1'}, yaxis={'title':'x2'})
-	# figure=go.Figure(data=data,layout=layout)
-	# py.iplot(figure, filename='pyguide_1')
+	# data = [xy_data, mov_avg]
+	# trying to add annotation to graph
+	# set to 85% heigh (kinda weird... but it centres alright)
+	# ISSUE: Can't add $ symbol to string! The html is doing something weird with it
+	annotations = []
+	annotations.append(dict(xref='paper', x=1.01, y=0.85*max(y), 
+                                  xanchor='left', yanchor='middle',
+                                  text='<b>Information on ' + stock_abbrev + "\nPrice: " + price + "\nOpen: " + op + "\nClose: " + close + "\nPE: " + pe +
+                                  "\nCAP: " + cap + "\nVolume: " + volume + "\nw52high: " + w52high + "\nw52low: " + w52low + "</b>",
+                                  font=dict(family='Arial',
+                                            size=15),
+                                  showarrow=False))
+	data=go.Data([xy_data, mov_avg])
+	layout=go.Layout(yaxis={'title':'Price (USD)'})
+	layout['annotations'] = annotations
+	figure=go.Figure(data=data,layout=layout)
+	py.iplot(figure, filename=stock_name + ' stock moving average', annotations = annotations)
 
-	py.iplot(data, filename=stock_name + ' stock moving average')
-
-	plot_url = py.plot(data, filename=stock_name + ' stock moving average', auto_open=False,)
+	plot_url = py.plot(figure, filename=stock_name + ' stock moving average', auto_open=False, annotations = annotations)
 	print (plot_url)
 
 	html_string = '''
@@ -135,9 +145,11 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote):
 	<h3 class = "header">4PM STOCK TRADING</h3>
 	<section class = "graph">
 		<h1>''' + stock_name + ' (' +stock_abbrev + ''') stock in the past year</h1>
-		<iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" \
-src="''' + plot_url + '''.embed?width=800&height=550"></iframe>
+		<iframe width="1200" height="550" frameborder="0" seamless="seamless" scrolling="no" \
+src="''' + plot_url + '''.embed?width=1100&height=550"></iframe>
 	</section>
+	<!-- COMMENT: I deleted Eric's updated info section below and added it to my graph-->
+	<!--
 	<section>
 		<p>''' + 'Information for ' + stock_abbrev + '''</p>
 		<p>''' + 'Current Price: $' + price + '''</p>
@@ -149,6 +161,7 @@ src="''' + plot_url + '''.embed?width=800&height=550"></iframe>
 		<p>''' + '52 Week Low: $' + w52low + '''</p>
 		<p>''' + 'Market Cap: $' + cap + '''</p>
 	</section>
+	-->
 	</body>
 </html>'''
 	file = './templates/'+stock_name+'-graph.html'
