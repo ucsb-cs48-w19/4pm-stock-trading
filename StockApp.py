@@ -16,8 +16,8 @@ def home():
 	names = []
 	tickers = []
 	prices = []
-	stocklist.save_stock_tickers(names, tickers, prices)
-	return render_template("home.html", title = 'home', stocknames = names, stocktickers = tickers, prices = prices)
+	stocklist.save_stock_tickers(names, tickers)
+	return render_template("home.html", title = 'home', stocknames = names, stocktickers = tickers)
 
 @app.route('/recommended')
 def render_recommended():
