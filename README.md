@@ -57,7 +57,9 @@ and the app will deploy at the URL listed above.
 
 ## Known Problems
 
-We are currently using Plotly to construct our graphs. However, every free account has a limit of 25 public graphs available. So, we must create a new account and input the new information into the top of 'graph.py' every time we run out of graphs for that account.
+* We are currently using Plotly to construct our graphs. However, every free account has a limit of 100 public graphs available. So, we must create a new account and input the new information into the top of 'graph.py' every time we run out of graphs for that account. We have used 3 (and counting) keys so far.
+
+* The live stock information the graph is formatted such that it's height is set to 85% the max y-value. This (usually) formats it nicely but sometimes, the formatting will be off. (Also there's a problem including the dollar sign symbol in the HTML-python string).
 
 ## Contributing
 
