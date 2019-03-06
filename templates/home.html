@@ -162,6 +162,16 @@
 	</div>
 <h3 class = "header">4PM STOCK TRADING</h3>
 
+<!--
+<center>
+<p>Date/Time: <span id="datetime"></span></p>
+</center>
+<script>
+var dt = new Date();
+document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+</script>
+-->
+
 
 <script>
       function onSignIn(googleUser) {
@@ -205,7 +215,7 @@
 <h2 class ="data" id = "name"></h2>
 
 <section class = "dashboard">
-	<h1>S&P 500</h1>
+	<h1>S&P 500 as of <span id="datetime"></span></h1>
 	<input type="text" id="myInput" onkeyup="filter()" placeholder="Search for stocks">
 	<div class="tbl-header">
 			<table cellpadding="0" cellspacing="0">
@@ -277,6 +287,15 @@
 			}
 		}
 	}
+</script>
+<!-- SCRIPT TO ADD DATE-->
+<script>
+var dt = new Date();
+if (dt.getHours() > 12) {
+	document.getElementById("datetime").innerHTML = (("0"+(dt.getMonth()+1)).slice(-2)) +"/"+ (("0"+dt.getDate()).slice(-2)) +"/"+ (dt.getFullYear()) +" at "+ (("0"+dt.getHours()).slice(-2)) +":"+ (("0"+dt.getMinutes()).slice(-2) + " PM");
+} else {
+	document.getElementById("datetime").innerHTML = (("0"+(dt.getMonth()+1)).slice(-2)) +"/"+ (("0"+dt.getDate()).slice(-2)) +"/"+ (dt.getFullYear()) +" at "+ (("0"+dt.getHours()).slice(-2)) +":"+ (("0"+dt.getMinutes()).slice(-2) + " AM");
+}
 </script>
 </body>
 </html>
