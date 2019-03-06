@@ -58,7 +58,7 @@ def showInfo():
 
 	data = stocks.getChart(stockabbrev)
 	quote = stocks.getQuote(stockabbrev)
-	graph.makeGraph(stockname, stockabbrev, data, quote, upvotes)
+	graph.makeGraph(stockname, stockabbrev, data, quote, str(upvotes))
 	sheet = "graph.html"
 	return render_template(sheet, title = 'stockinfo', display = 'Upvote')
 
