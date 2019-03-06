@@ -6,6 +6,7 @@ import stocks
 import graph
 import stocklist
 from glob import glob
+import json
 
 app = Flask(__name__)
 
@@ -31,11 +32,17 @@ def render_my_stocks():
 def render_about():
     return render_template("about.html", title = 'about')
 
-@app.route('/stocks') #test function that shows microsoft data, currently not used
-def dynamic_page():
-	data = stocks.getChart("MSFT") 
-	graph.makeGraph("Microsoft", "MSFT", data)
-	return render_template("graph.html", title = 'stockinfo')
+@app.route('/upvoted', methods = ['GET'])
+def button_pressed():
+	stockabbrev = request.args.get('abbrev')
+	file = open('Data/stockData.txt', 'r')
+	stockDict = json.loads(file.read())
+	file.close()
+	stockDict[stockabbrev] = stockDict[stockabbrev] + 1
+	file = open('Data/stockData.txt', 'w')
+	file.write(json.dumps(stockDict))
+	file.close()
+	return render_template("graph.html", title = 'stockinfo', display = 'Upvoted')
 
 @app.route('/stockinfo', methods = ['GET']) #example http query: (home url)/stockinfo?name=Microsoft&abbrev=MSFT
 def showInfo():
@@ -43,11 +50,17 @@ def showInfo():
 		os.remove(file)
 	stockname = request.args.get('name')
 	stockabbrev = request.args.get('abbrev')
+
+	file = open('Data/stockData.txt', 'r')
+	stockDict = json.loads(file.read())
+	file.close()
+	upvotes = stockDict[stockabbrev]
+
 	data = stocks.getChart(stockabbrev)
 	quote = stocks.getQuote(stockabbrev)
-	graph.makeGraph(stockname, stockabbrev, data, quote)
-	sheet = stockname+"-graph.html"
-	return render_template(sheet, title = 'stockinfo')
+	graph.makeGraph(stockname, stockabbrev, data, quote, upvotes)
+	sheet = "graph.html"
+	return render_template(sheet, title = 'stockinfo', display = 'Upvote')
 
 if __name__ == "__main__":
 	port = int(os.environ.get('PORT', 33507))

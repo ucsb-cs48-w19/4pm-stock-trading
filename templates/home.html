@@ -166,6 +166,7 @@
 					var names = {{ stocknames|tojson }};
 					var tickers = {{ stocktickers|tojson }};
 					var temp = "Click to learn more.";
+					console.log(names[0])
 					for (var a=0; a < names.length; a++) {
 						document.write("<tr class = \"clickable\" onclick = \"window.location='/stockinfo?name=" + names[a] + "&abbrev=" + tickers[a] + "'\">");
 							document.write("<td>"+tickers[a]+"</td>");

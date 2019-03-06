@@ -2,6 +2,7 @@ import bs4 as bs
 import stocks
 import pickle
 import requests
+import json
 
 def save_stock_tickers(names, tickers, prices):
 	resp = requests.get('http://en.wikipedia.org/wiki/List_of_S%26P_500_companies')

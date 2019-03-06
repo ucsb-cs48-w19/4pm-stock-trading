@@ -24,11 +24,13 @@ def moving_average(interval, window_size):
 	window = np.ones(int(window_size))/float(window_size)
 	return np.convolve(interval, window, 'same')
 
-def makeGraph(stock_name, stock_abbrev, quotes, quote):
+def makeGraph(stock_name, stock_abbrev, quotes, quote, upvotes):
 	x = []
 	y = []
 	values = []
 	ma = []
+	print(stock_name)
+	print(stock_abbrev)
 
 	price = str(quote['latestPrice'])
 	op = str(quote['open'])
@@ -129,6 +131,12 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote):
 	  		<a href="/about">About</a>
 		</div>
 	<h3 class = "header">4PM STOCK TRADING</h3>
+	<section>
+	<a href =''' + '/upvoted?abbrev=' + stock_abbrev + '''><button>upvote</button></a>
+	</section>
+	<section>
+	<p>'''+'This stock has ' + upvotes + ' upvotes' + '''</p>
+	</section>
 	<section class = "graph">
 		<h1>''' + stock_name + ' (' +stock_abbrev + ''') stock in the past year</h1>
 		<iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" \
@@ -147,7 +155,7 @@ src="''' + plot_url + '''.embed?width=800&height=550"></iframe>
 	</section>
 	</body>
 </html>'''
-	file = './templates/'+stock_name+'-graph.html'
+	file = './templates/graph.html'
 	f = open(file,'w')
 	f.write(html_string)
 	f.close()
