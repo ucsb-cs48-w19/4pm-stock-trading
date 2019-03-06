@@ -84,6 +84,8 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote):
 		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 		<style>body{ margin:0 100; background:whitesmoke; }</style>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="153539022496-7vdj6npoqb0ifaa4ocjbaf1mn8sq97d8.apps.googleusercontent.com">
 	</head>
 	<style>
 		.topnav {
@@ -136,13 +138,60 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote):
 		}
 	</style>
 	<body>
+
+
+
+
+
 		<div class="topnav">
 	  		<a class="active" href="/">Home</a>
 	  		<a href="/recommended">Recommended Stocks</a>
 	  		<a href="/mystocks">My Stocks</a>
 	  		<a href="/about">About</a>
+<a onclick="signOut()" href= "/">Sign Out</a>
+
+        <li style="float:right"><a href="#signin"><div class="g-signin2" data-onsuccess="onSignIn"></div></a></li>
 		</div>
 	<h3 class = "header">4PM STOCK TRADING</h3>
+
+<script>
+      function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        
+        var profile = googleUser.getBasicProfile();
+        /*
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+*/
+        
+       
+        
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+      }
+
+</script>
+
+<script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+    var x = document.getElementById("");
+    x.style.display = "none"
+    window.location.reload(true);
+  }
+</script> 
+
+
+
 	<section class = "graph">
 		<h1>''' + stock_name + ' (' +stock_abbrev + ''') stock in the past year</h1>
 		<iframe width="1200" height="550" frameborder="0" seamless="seamless" scrolling="no" \
