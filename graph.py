@@ -72,6 +72,8 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote, upvotes):
 		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 		<style>body{ margin:0 100; background:whitesmoke; }</style>
+		<script src="https://apis.google.com/js/platform.js" async defer></script>
+		<meta name="google-signin-client_id" content="153539022496-7vdj6npoqb0ifaa4ocjbaf1mn8sq97d8.apps.googleusercontent.com">
 	</head>
 	<style>
 		.topnav {
@@ -122,6 +124,13 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote, upvotes):
 			text-align: center;
 			font-family: 'Raleway', sans-serif;
 		}
+
+		.upvote{
+
+			visibility: hidden;
+
+
+		}
 	</style>
 	<body>
 		<div class="topnav">
@@ -129,19 +138,61 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote, upvotes):
 	  		<a href="/recommended">Recommended Stocks</a>
 	  		<a href="/mystocks">My Stocks</a>
 	  		<a href="/about">About</a>
+	  		<a onclick="signOut()" href= "/">Sign Out</a>
+        	<li style="float:right"><a href="#signin"><div class="g-signin2" data-onsuccess="onSignIn"></div></a></li>
 		</div>
 	<h3 class = "header">4PM STOCK TRADING</h3>
+
+	<script>
+      function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        
+        var profile = googleUser.getBasicProfile();
+        /*
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+*/
+        
+       //show upvote button
+       document.getElementById("upvote").style.visibility = visible;
+        
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+      }
+
+	</script>
+
+	<script>
+	  function signOut() {
+	    var auth2 = gapi.auth2.getAuthInstance();
+	    auth2.signOut().then(function () {
+	      console.log('User signed out.');
+	    });
+	    var x = document.getElementById("");
+	    x.style.display = "none"
+	    window.location.reload(true);
+	  }
+	</script> 
+
 	<section>
-	<a href =''' + '/upvoted?abbrev=' + stock_abbrev + '''><button>upvote</button></a>
+	<a href =''' + '/upvoted?abbrev=' + stock_abbrev + '''><button class = "upvote" id = "upvote" >upvote</button></a>
 	</section>
 	<section>
 	<p>'''+'This stock has ' + upvotes + ' upvotes' + '''</p>
 	</section>
 	<section class = "graph">
 		<h1>''' + stock_name + ' (' +stock_abbrev + ''') stock in the past year</h1>
-		<iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" \
-src="''' + plot_url + '''.embed?width=800&height=550"></iframe>
+		<iframe width="1200" height="550" frameborder="0" seamless="seamless" scrolling="no" \
+src="''' + plot_url + '''.embed?width=1100&height=550"></iframe>
 	</section>
+	<!-- COMMENT: I deleted Eric's updated info section below and added it to my graph-->
+	<!--
 	<section>
 		<p>''' + 'Information for ' + stock_abbrev + '''</p>
 		<p>''' + 'Current Price: $' + price + '''</p>
