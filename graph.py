@@ -166,7 +166,7 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote, upvotes):
 */
         
        //show upvote button
-       document.getElementById("upvote").style.visibility = visible;
+       document.getElementById("upvote").style.visibility = "visible";
         
 
         // The ID token you need to pass to your backend:
