@@ -68,7 +68,8 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote):
 	layout=go.Layout(yaxis={'title':'Price (USD)'})
 	layout['annotations'] = annotations
 	figure=go.Figure(data=data,layout=layout)
-	py.iplot(figure, filename=stock_name + ' stock moving average', annotations = annotations)
+	config = {'scrollZoom': False}
+	py.iplot(figure, filename=stock_name + ' stock moving average', annotations = annotations, config = config)
 
 	plot_url = py.plot(figure, filename=stock_name + ' stock moving average', auto_open=False, annotations = annotations)
 	print (plot_url)
