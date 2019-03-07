@@ -122,7 +122,6 @@
 	}
 	.clickable:hover {
 		background-color: #f7f7f7;
-		cursor: pointer;
 	}
 	
 	.content {
@@ -234,13 +233,13 @@ document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
 				<script language="javascript" type="text/javascript">
 					var names = {{ stocknames|tojson }};
 					var tickers = {{ stocktickers|tojson }};
-					var temp = "Click to learn more.";
+					//var temp = "Click to learn more.";
 					for (var a=0; a < names.length; a++) {
-						document.write("<tr class = \"clickable\" onclick = \"window.location='/stockinfo?name=" + names[a] + "&abbrev=" + tickers[a] + "'\">");
+						document.write("<tr class = \"clickable\">");
 							document.write("<td>"+tickers[a]+"</td>");
 							document.write("<td>"+names[a]+"</td>");
 							// put the rest of the data here
-							document.write('<td>'+temp.fontcolor('blue') +'</td>');
+							document.write("<td> <a href=\"stockinfo?name=" + names[a] + "&abbrev=" + tickers[a] + "\"> <div>Click to learn more.</div></a></td>");
 						document.write("</tr>");
 					}
 				</script>

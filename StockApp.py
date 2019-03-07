@@ -11,8 +11,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-	for file in glob("./templates/*-graph.html"):
-		os.remove(file)
 	names = []
 	tickers = []
 	prices = []
@@ -39,15 +37,13 @@ def dynamic_page():
 
 @app.route('/stockinfo', methods = ['GET']) #example http query: (home url)/stockinfo?name=Microsoft&abbrev=MSFT
 def showInfo():
-	for file in glob("./templates/*-graph.html"): #get rid of all previous graph htmls <- temp fix
-		os.remove(file)
 	stockname = request.args.get('name')
 	stockabbrev = request.args.get('abbrev')
 	data = stocks.getChart(stockabbrev)
 	quote = stocks.getQuote(stockabbrev)
-	graph.makeGraph(stockname, stockabbrev, data, quote)
-	sheet = stockname+"-graph.html"
-	return render_template(sheet, title = 'stockinfo')
+	url = graph.makeGraph(stockname, stockabbrev, data, quote)
+	sheet = "graph.html"
+	return render_template(sheet, title = 'stockinfo', name = stockname, abbrev = stockabbrev, graph_url = url)
 
 
 @app.route('/google973af8c591e84ad7.html')
