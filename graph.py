@@ -54,9 +54,17 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote, upvotes):
 	xy_data = go.Scatter( x=x, y=y, mode='markers', marker=dict(size=4), name=stock_abbrev )
 	mov_avg = go.Scatter( x=x[5:-4], y=ma[5:-4], \
 					  line=dict(width=2,color='red'), name='Moving average' )
+	annotations = []
+	annotations.append(dict(xref='paper', x=1.01, y=max(y) - 0.4 * (max(y) - min(y)), 
+                                  xanchor='left', yanchor='middle',
+                                  text='<b>Information on ' + stock_abbrev + "\nPrice: " + price + "\nOpen: " + op + "\nClose: " + close + "\nPE: " + pe +
+                                  "\nCAP: " + cap + "\nVolume: " + volume + "\nw52high: " + w52high + "\nw52low: " + w52low + "</b>",
+                                  font=dict(family='Arial',
+                                            size=15),
+                                  showarrow=False))
 	data = [xy_data, mov_avg]
 
-	py.iplot(data, filename=stock_name + ' stock moving average')
+	py.iplot(data, filename=stock_name + ' stock moving average', annotations = annotations)
 
 	plot_url = py.plot(data, filename=stock_name + ' stock moving average', auto_open=False,)
 	print (plot_url)
