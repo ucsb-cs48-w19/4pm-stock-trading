@@ -3,7 +3,7 @@ import stocks
 import pickle
 import requests
 
-def save_stock_tickers(names, tickers, prices):
+def save_stock_tickers(names, tickers):
 	resp = requests.get('http://en.wikipedia.org/wiki/List_of_S%26P_500_companies')
 	soup = bs.BeautifulSoup(resp.text, 'lxml')
 	table = soup.find('table', {'class': 'wikitable sortable'})

@@ -16,8 +16,8 @@ def home():
 	names = []
 	tickers = []
 	prices = []
-	stocklist.save_stock_tickers(names, tickers, prices)
-	return render_template("home.html", title = 'home', stocknames = names, stocktickers = tickers, prices = prices)
+	stocklist.save_stock_tickers(names, tickers)
+	return render_template("home.html", title = 'home', stocknames = names, stocktickers = tickers)
 
 @app.route('/recommended')
 def render_recommended():
@@ -49,6 +49,10 @@ def showInfo():
 	sheet = stockname+"-graph.html"
 	return render_template(sheet, title = 'stockinfo')
 
+
+@app.route('/google973af8c591e84ad7.html')
+def render_ver():
+	return render_template("google973af8c591e84ad7.html", title = 'verification')
 if __name__ == "__main__":
 	port = int(os.environ.get('PORT', 33507))
 	app.run()
