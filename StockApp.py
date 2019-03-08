@@ -10,6 +10,7 @@ import json
 
 app = Flask(__name__)
 
+# routes to home page
 @app.route('/')
 def home():
 	for file in glob("./templates/*-graph.html"):
@@ -20,6 +21,7 @@ def home():
 	stocklist.save_stock_tickers(names, tickers)
 	return render_template("home.html", title = 'home', stocknames = names, stocktickers = tickers)
 
+# routes to trending page
 @app.route('/trending')
 def render_recommended():
 	file = open('Data/stockData.txt', 'r')
@@ -46,14 +48,17 @@ def render_recommended():
 	#print(upvotes)
 	return render_template("recommended.html", title = 'Trending',stocknames = names, stocktickers= tickers, upvotes = upvotes)
 
+# routes to stocks page
 @app.route('/mystocks')
 def render_my_stocks():
 	return render_template("mystocks.html", title = 'mystocks')
 
+# routes to about page
 @app.route('/about')
 def render_about():
     return render_template("about.html", title = 'about')
 
+# routes to upvoted 
 @app.route('/upvoted', methods = ['GET'])
 def button_pressed():
 	stockabbrev = request.args.get('abbrev')
@@ -78,6 +83,7 @@ def button_pressed():
 	sheet = stockabbrev + "-graph.html"
 	return render_template(stockabbrev + "-graph.html", title = 'stockinfo', display = 'Upvoted')
 
+# routes to info
 @app.route('/stockinfo', methods = ['GET']) #example http query: (home url)/stockinfo?name=Microsoft&abbrev=MSFT
 def showInfo():
 	for file in glob("./templates/*-graph.html"): #get rid of all previous graph htmls <- temp fix

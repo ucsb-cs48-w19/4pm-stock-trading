@@ -19,11 +19,12 @@ import matplotlib.pyplot as plt
 from IPython.display import HTML
 import stocks
 
-
+# moving average backend 
 def moving_average(interval, window_size):
 	window = np.ones(int(window_size))/float(window_size)
 	return np.convolve(interval, window, 'same')
 
+# returns a plotly url (will append url below in html)
 def makeGraph(stock_name, stock_abbrev, quotes, quote, upvotes):
 	x = []
 	y = []
