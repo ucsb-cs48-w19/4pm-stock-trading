@@ -201,27 +201,6 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote, upvotes):
 	<p>'''+'This stock has ' + upvotes + ' upvotes' + '''</p>
 	<p>'''+'Login to vote'+'''</p>
 	</section>
-<<<<<<< HEAD
-	<section class = "graph">
-		<h1>''' + stock_name + ' (' +stock_abbrev + ''') stock in the past year</h1>
-		<iframe width="1200" height="550" frameborder="0" seamless="seamless" scrolling="no" \
-src="''' + plot_url + '''.embed?width=1100&height=550"></iframe>
-	</section>
-	<!-- COMMENT: I deleted Eric's updated info section below and added it to my graph-->
-	<!--
-	<section>
-		<p>''' + 'Information for ' + stock_abbrev + '''</p>
-		<p>''' + 'Current Price: $' + price + '''</p>
-		<p>''' + 'Open: $' + op + '''</p>
-		<p>''' + 'Close: $' + close + '''</p>
-		<p>''' + 'PE ratio: ' + pe + '''<p>
-		<p>''' + 'Latest Volume: ' + volume + '''</p>
-		<p>''' + '52 Week High: $' + w52high + '''</p>
-		<p>''' + '52 Week Low: $' + w52low + '''</p>
-		<p>''' + 'Market Cap: $' + cap + '''</p>
-	</section>
-	-->
-=======
 	<div style="display: block">
 		<section class = "graph" style="display: inline-block; vertical-align: top">
 			<h1>''' + stock_name + ' (' +stock_abbrev + ''') stock in the past year</h1>
@@ -241,9 +220,6 @@ src="''' + plot_url + '''.embed?width=1100&height=550"></iframe>
 			-->
 		</section>
 	</div>
-
-	
->>>>>>> f8d4c5d834549f555d7d39942db40599f88eb3df
 	</body>
 </html>'''
 	file = './templates/' + stock_abbrev + '-graph.html'
