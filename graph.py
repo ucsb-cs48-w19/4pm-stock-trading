@@ -9,7 +9,7 @@ from datetime import date as dt_date
 import plotly.plotly as py
 import plotly.tools as plotly_tools
 import plotly.graph_objs as go
-plotly_tools.set_credentials_file(username='franklee', api_key='MxDFG8cQ59WifpMhd9d3')
+plotly_tools.set_credentials_file(username='franklee26', api_key='NUbcE4xBFBPFP6tezOBR')
 
 import os
 import tempfile
