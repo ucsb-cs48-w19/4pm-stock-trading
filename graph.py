@@ -54,19 +54,22 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote, upvotes):
 	xy_data = go.Scatter( x=x, y=y, mode='markers', marker=dict(size=4), name=stock_abbrev )
 	mov_avg = go.Scatter( x=x[5:-4], y=ma[5:-4], \
 					  line=dict(width=2,color='red'), name='Moving average' )
-	"""annotations = []
+	annotations = []
 	annotations.append(dict(xref='paper', x=1.01, y=max(y) - 0.4 * (max(y) - min(y)), 
                                   xanchor='left', yanchor='middle',
                                   text='<b>Information on ' + stock_abbrev + "\nPrice: " + price + "\nOpen: " + op + "\nClose: " + close + "\nPE: " + pe +
                                   "\nCAP: " + cap + "\nVolume: " + volume + "\nw52high: " + w52high + "\nw52low: " + w52low + "</b>",
                                   font=dict(family='Arial',
                                             size=15),
-                                  showarrow=False))"""
-	data = [xy_data, mov_avg]
+                                  showarrow=False))
+	data = go.Data([xy_data, mov_avg])
+	layout=go.Layout(yaxis={'title':'Price (USD)'})
+	layout['annotations'] = annotations
+	figure=go.Figure(data=data,layout=layout)
 
-	py.iplot(data, filename=stock_name + ' stock moving average')
+	py.iplot(data, filename=stock_name + ' stock moving average', annotations = annotations)
 
-	plot_url = py.plot(data, filename=stock_name + ' stock moving average', auto_open=False,)
+	plot_url = py.plot(figure, filename=stock_name + ' stock moving average', auto_open=False, annotations = annotations)
 	print (plot_url)
 
 	html_string = '''
@@ -197,9 +200,10 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote, upvotes):
 	<div style="display: block">
 		<section class = "graph" style="display: inline-block; vertical-align: top">
 			<h1>''' + stock_name + ' (' +stock_abbrev + ''') stock in the past year</h1>
-			<iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" src="''' + plot_url + '''.embed?width=1100&height=550"></iframe>
+			<iframe width="1100" height="550" frameborder="0" seamless="seamless" scrolling="no" src="''' + plot_url + '''.embed?width=1100&height=550?showlink=false&modebar=false"></iframe>
 		</section>
 		<section style="display: inline-block; vertical-align: top">
+		<!--
 			<p>''' + 'Information for ' + stock_abbrev + '''</p>
 			<p>''' + 'Current Price: $' + price + '''</p>
 			<p>''' + 'Open: $' + op + '''</p>
@@ -209,6 +213,7 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote, upvotes):
 			<p>''' + '52 Week High: $' + w52high + '''</p>
 			<p>''' + '52 Week Low: $' + w52low + '''</p>
 			<p>''' + 'Market Cap: $' + cap + '''</p>
+			-->
 		</section>
 	</div>
 
