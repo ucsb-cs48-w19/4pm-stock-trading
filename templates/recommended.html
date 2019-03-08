@@ -156,6 +156,9 @@
           <tr>
             <th>Ticker</th>
             <th>Company</th>
+            <th>Price</th>
+            <th>Change</th>
+            <th>Change %</th>
             <th>Upvotes</th>
             <th></th>
           </tr>
@@ -172,12 +175,25 @@
           var temp = "Click to learn more.";
           console.log(names)
           for (var a=0; a < names.length; a++) {
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("GET", "https://api.iextrading.com/1.0/stock/" + tickers[a] + "/quote", false);
+            xmlHttp.send(null);
+            var arr = JSON.parse(xmlHttp.response);
             document.write("<tr class = \"clickable\" onclick = \"window.location='/stockinfo?name=" + names[a] + "&abbrev=" + tickers[a] + "'\">");
-              document.write("<td>"+names[a]+"</td>");
               document.write("<td>"+tickers[a]+"</td>");
+              document.write("<td>"+names[a]+"</td>");
+              document.write("<td>$" + arr['latestPrice'].toFixed(2) + "</td>");
+              document.write("<td>$" + arr['change'] + "</td>");
+              document.write("<td ");
+              if (arr['changePercent']>0){
+                document.write("style='color:#25b227'>%");
+              }
+              if (arr['changePercent'] < 0) {
+                document.write("style = 'color:#ff554c'>%");
+              }
+              document.write((arr['changePercent']*100).toFixed(2)+"</td>");
               document.write("<td>"+stockUpvotes[a]+"</td>");
               // put the rest of the data here
-              document.write('<td>'+temp.fontcolor('blue') +'</td>');
             document.write("</tr>");
           }
         </script>
