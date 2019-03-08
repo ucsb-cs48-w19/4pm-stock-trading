@@ -1,6 +1,6 @@
 # 4pm-stock-trading
 
-URL to current app: https://stocktrading-4pm-mvp.herokuapp.com/
+URL to current app: https://stocktrading-4pm.herokuapp.com/
 
 Travis CI to the master branch:
 <a href="https://travis-ci.org/ucsb-cs48-w19/4pm-stock-trading">
@@ -31,6 +31,8 @@ This app displays a list of popular stocks and allows you to choose which ones y
 * numpy version 1.16.1
 * pandas version 0.24.1
 * ipython version 7.2.0
+* beautifulsoup4 version 4.7.1
+* lxml version 4.3.1
 
 ### Installation Steps
 
@@ -55,7 +57,10 @@ and the app will deploy at the URL listed above.
 
 ## Known Problems
 
-We are currently using Plotly to construct our graphs. However, every free account has a limit of 25 public graphs available. So, we must create a new account and input the new information into the top of 'graph.py' every time we run out of graphs for that account.
+* We are currently using Plotly to construct our graphs. However, every free account has a limit of 100 public graphs available. So, we must create a new account and input the new information into the top of 'graph.py' every time we run out of graphs for that account. We have used 3 (and counting) keys so far.
+
+* <strike>The live stock information the graph is formatted such that it's height is set to 85% the max y-value. This (usually) formats it nicely but sometimes, the formatting will be off. (Also there's a problem including the dollar sign symbol in the HTML-python string). </strike> UPDATE: Fixed! Now using an offset based off the max range or in otherwords, I used MAX - 0.4 * (MAX-MIN). The offset is 40% the maxrange.
+
 
 ## Contributing
 

@@ -9,7 +9,7 @@ from datetime import date as dt_date
 import plotly.plotly as py
 import plotly.tools as plotly_tools
 import plotly.graph_objs as go
-plotly_tools.set_credentials_file(username='shirlyn', api_key='6xWgJbxX7mvqlJf5M3gx')
+plotly_tools.set_credentials_file(username='franklee', api_key='MxDFG8cQ59WifpMhd9d3')
 
 import os
 import tempfile
@@ -51,9 +51,13 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote, upvotes):
 		y = list(map(float,values))
 		ma = moving_average(y, 10)
 
-	xy_data = go.Scatter( x=x, y=y, mode='markers', marker=dict(size=4), name=stock_abbrev )
+	xy_data = go.Scatter( x=x, y=y, mode='markers', marker=dict(size=4), name=stock_abbrev)
 	mov_avg = go.Scatter( x=x[5:-4], y=ma[5:-4], \
 					  line=dict(width=2,color='red'), name='Moving average' )
+	# data = [xy_data, mov_avg]
+	# trying to add annotation to graph
+	# Sets the text at x,y and so I off set it proportional to the 40% of the max range. Works surpisingly well!
+	# ISSUE: Can't add $ symbol to string! The html is doing something weird with it
 	annotations = []
 	annotations.append(dict(xref='paper', x=1.01, y=max(y) - 0.4 * (max(y) - min(y)), 
                                   xanchor='left', yanchor='middle',
@@ -62,11 +66,13 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote, upvotes):
                                   font=dict(family='Arial',
                                             size=15),
                                   showarrow=False))
-	data = [xy_data, mov_avg]
+	data=go.Data([xy_data, mov_avg])
+	layout=go.Layout(yaxis={'title':'Price (USD)'})
+	layout['annotations'] = annotations
+	figure=go.Figure(data=data,layout=layout)
+	py.iplot(figure, filename=stock_name + ' stock moving average', annotations = annotations)
 
-	py.iplot(data, filename=stock_name + ' stock moving average', annotations = annotations)
-
-	plot_url = py.plot(data, filename=stock_name + ' stock moving average', auto_open=False,)
+	plot_url = py.plot(figure, filename=stock_name + ' stock moving average', auto_open=False, annotations = annotations)
 	print (plot_url)
 
 	html_string = '''
@@ -212,6 +218,7 @@ src="''' + plot_url + '''.embed?width=1100&height=550"></iframe>
 		<p>''' + '52 Week Low: $' + w52low + '''</p>
 		<p>''' + 'Market Cap: $' + cap + '''</p>
 	</section>
+	-->
 	</body>
 </html>'''
 	file = './templates/graph.html'
