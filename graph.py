@@ -24,11 +24,13 @@ def moving_average(interval, window_size):
 	window = np.ones(int(window_size))/float(window_size)
 	return np.convolve(interval, window, 'same')
 
-def makeGraph(stock_name, stock_abbrev, quotes, quote):
+def makeGraph(stock_name, stock_abbrev, quotes, quote, upvotes):
 	x = []
 	y = []
 	values = []
 	ma = []
+	print(stock_name)
+	print(stock_abbrev)
 
 	price = str(quote['latestPrice'])
 	op = str(quote['open'])
@@ -64,11 +66,12 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote):
                                   font=dict(family='Arial',
                                             size=15),
                                   showarrow=False))
-	data=go.Data([xy_data, mov_avg])
+	data = go.Data([xy_data, mov_avg])
 	layout=go.Layout(yaxis={'title':'Price (USD)'})
 	layout['annotations'] = annotations
 	figure=go.Figure(data=data,layout=layout)
-	py.iplot(figure, filename=stock_name + ' stock moving average', annotations = annotations)
+
+	py.iplot(data, filename=stock_name + ' stock moving average', annotations = annotations)
 
 	plot_url = py.plot(figure, filename=stock_name + ' stock moving average', auto_open=False, annotations = annotations)
 	print (plot_url)
@@ -84,6 +87,8 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote):
 		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 		<style>body{ margin:0 100; background:whitesmoke; }</style>
+		<script src="https://apis.google.com/js/platform.js" async defer></script>
+		<meta name="google-signin-client_id" content="153539022496-7vdj6npoqb0ifaa4ocjbaf1mn8sq97d8.apps.googleusercontent.com">
 	</head>
 	<style>
 		.topnav {
@@ -134,15 +139,69 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote):
 			text-align: center;
 			font-family: 'Raleway', sans-serif;
 		}
+
+		.upvote{
+
+			visibility: hidden;
+
+
+		}
 	</style>
 	<body>
 		<div class="topnav">
 	  		<a class="active" href="/">Home</a>
-	  		<a href="/recommended">Recommended Stocks</a>
-	  		<a href="/mystocks">My Stocks</a>
+	  		<a href="/trending">Trending Stocks</a>
 	  		<a href="/about">About</a>
+	  		<a onclick="signOut()" href= "/">Sign Out</a>
+        	<li style="float:right"><a href="#signin"><div class="g-signin2" data-onsuccess="onSignIn"></div></a></li>
 		</div>
 	<h3 class = "header">4PM STOCK TRADING</h3>
+
+	<script>
+      function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        
+        var profile = googleUser.getBasicProfile();
+        /*
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+*/
+        
+       //show upvote button
+       document.getElementById("upvote").style.visibility = "visible";
+        
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+      }
+
+	</script>
+
+	<script>
+	  function signOut() {
+	    var auth2 = gapi.auth2.getAuthInstance();
+	    auth2.signOut().then(function () {
+	      console.log('User signed out.');
+	    });
+	    var x = document.getElementById("");
+	    x.style.display = "none"
+	    window.location.reload(true);
+	  }
+	</script> 
+
+	<section>
+	<a href =''' + '/upvoted?abbrev=' + stock_abbrev + '''><button class = "upvote" id = "upvote" >upvote</button></a>
+	</section>
+	<section>
+	<p>'''+'This stock has ' + upvotes + ' upvotes' + '''</p>
+	<p>'''+'Login to vote'+'''</p>
+	</section>
+<<<<<<< HEAD
 	<section class = "graph">
 		<h1>''' + stock_name + ' (' +stock_abbrev + ''') stock in the past year</h1>
 		<iframe width="1200" height="550" frameborder="0" seamless="seamless" scrolling="no" \
@@ -162,9 +221,32 @@ src="''' + plot_url + '''.embed?width=1100&height=550"></iframe>
 		<p>''' + 'Market Cap: $' + cap + '''</p>
 	</section>
 	-->
+=======
+	<div style="display: block">
+		<section class = "graph" style="display: inline-block; vertical-align: top">
+			<h1>''' + stock_name + ' (' +stock_abbrev + ''') stock in the past year</h1>
+			<iframe width="1100" height="550" frameborder="0" seamless="seamless" scrolling="no" src="''' + plot_url + '''.embed?width=1100&height=550?showlink=false&modebar=false"></iframe>
+		</section>
+		<section style="display: inline-block; vertical-align: top">
+		<!--
+			<p>''' + 'Information for ' + stock_abbrev + '''</p>
+			<p>''' + 'Current Price: $' + price + '''</p>
+			<p>''' + 'Open: $' + op + '''</p>
+			<p>''' + 'Close: $' + close + '''</p>
+			<p>''' + 'PE ratio: ' + pe + '''<p>
+			<p>''' + 'Latest Volume: ' + volume + '''</p>
+			<p>''' + '52 Week High: $' + w52high + '''</p>
+			<p>''' + '52 Week Low: $' + w52low + '''</p>
+			<p>''' + 'Market Cap: $' + cap + '''</p>
+			-->
+		</section>
+	</div>
+
+	
+>>>>>>> f8d4c5d834549f555d7d39942db40599f88eb3df
 	</body>
 </html>'''
-	file = './templates/'+stock_name+'-graph.html'
+	file = './templates/' + stock_abbrev + '-graph.html'
 	f = open(file,'w')
 	f.write(html_string)
 	f.close()
