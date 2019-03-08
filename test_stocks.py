@@ -1,6 +1,7 @@
 import pytest
 
 from stocks import getChart
+from stocklist import save_stock_tickers
 
 
 def test_getChart():
