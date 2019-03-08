@@ -66,11 +66,12 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote, upvotes):
                                   font=dict(family='Arial',
                                             size=15),
                                   showarrow=False))
-	data=go.Data([xy_data, mov_avg])
+	data = go.Data([xy_data, mov_avg])
 	layout=go.Layout(yaxis={'title':'Price (USD)'})
 	layout['annotations'] = annotations
 	figure=go.Figure(data=data,layout=layout)
-	py.iplot(figure, filename=stock_name + ' stock moving average', annotations = annotations)
+
+	py.iplot(data, filename=stock_name + ' stock moving average', annotations = annotations)
 
 	plot_url = py.plot(figure, filename=stock_name + ' stock moving average', auto_open=False, annotations = annotations)
 	print (plot_url)
@@ -149,8 +150,7 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote, upvotes):
 	<body>
 		<div class="topnav">
 	  		<a class="active" href="/">Home</a>
-	  		<a href="/recommended">Recommended Stocks</a>
-	  		<a href="/mystocks">My Stocks</a>
+	  		<a href="/trending">Trending Stocks</a>
 	  		<a href="/about">About</a>
 	  		<a onclick="signOut()" href= "/">Sign Out</a>
         	<li style="float:right"><a href="#signin"><div class="g-signin2" data-onsuccess="onSignIn"></div></a></li>
@@ -172,7 +172,7 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote, upvotes):
 */
         
        //show upvote button
-       document.getElementById("upvote").style.visibility = visible;
+       document.getElementById("upvote").style.visibility = "visible";
         
 
         // The ID token you need to pass to your backend:
@@ -199,7 +199,9 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote, upvotes):
 	</section>
 	<section>
 	<p>'''+'This stock has ' + upvotes + ' upvotes' + '''</p>
+	<p>'''+'Login to vote'+'''</p>
 	</section>
+<<<<<<< HEAD
 	<section class = "graph">
 		<h1>''' + stock_name + ' (' +stock_abbrev + ''') stock in the past year</h1>
 		<iframe width="1200" height="550" frameborder="0" seamless="seamless" scrolling="no" \
@@ -219,9 +221,32 @@ src="''' + plot_url + '''.embed?width=1100&height=550"></iframe>
 		<p>''' + 'Market Cap: $' + cap + '''</p>
 	</section>
 	-->
+=======
+	<div style="display: block">
+		<section class = "graph" style="display: inline-block; vertical-align: top">
+			<h1>''' + stock_name + ' (' +stock_abbrev + ''') stock in the past year</h1>
+			<iframe width="1100" height="550" frameborder="0" seamless="seamless" scrolling="no" src="''' + plot_url + '''.embed?width=1100&height=550?showlink=false&modebar=false"></iframe>
+		</section>
+		<section style="display: inline-block; vertical-align: top">
+		<!--
+			<p>''' + 'Information for ' + stock_abbrev + '''</p>
+			<p>''' + 'Current Price: $' + price + '''</p>
+			<p>''' + 'Open: $' + op + '''</p>
+			<p>''' + 'Close: $' + close + '''</p>
+			<p>''' + 'PE ratio: ' + pe + '''<p>
+			<p>''' + 'Latest Volume: ' + volume + '''</p>
+			<p>''' + '52 Week High: $' + w52high + '''</p>
+			<p>''' + '52 Week Low: $' + w52low + '''</p>
+			<p>''' + 'Market Cap: $' + cap + '''</p>
+			-->
+		</section>
+	</div>
+
+	
+>>>>>>> f8d4c5d834549f555d7d39942db40599f88eb3df
 	</body>
 </html>'''
-	file = './templates/graph.html'
+	file = './templates/' + stock_abbrev + '-graph.html'
 	f = open(file,'w')
 	f.write(html_string)
 	f.close()

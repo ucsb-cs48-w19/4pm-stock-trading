@@ -20,9 +20,31 @@ def home():
 	stocklist.save_stock_tickers(names, tickers)
 	return render_template("home.html", title = 'home', stocknames = names, stocktickers = tickers)
 
-@app.route('/recommended')
+@app.route('/trending')
 def render_recommended():
-	return render_template("recommended.html", title = 'recommended')
+	file = open('Data/stockData.txt', 'r')
+	stockDict = json.loads(file.read())
+	file.close()
+	names = []
+	tickers = []
+	upvotes = []
+	for i in range(5):
+		maxticker = list(stockDict.keys())[0]
+		maxUpvote = list(stockDict.values())[0]
+		for key, value in stockDict.items():
+			if(isinstance(value, int) and value > maxUpvote):
+				maxticker = key
+				maxUpvote = value
+		tickers.append(maxticker)
+		names.append(stockDict[maxticker + '-name'])
+		upvotes.append(str(maxUpvote))
+		stockDict.pop(maxticker)
+		stockDict.pop(maxticker+'-name')
+		print(list(stockDict.keys())[0])
+	#print(names)
+	#print(tickers)
+	#print(upvotes)
+	return render_template("recommended.html", title = 'Trending',stocknames = names, stocktickers= tickers, upvotes = upvotes)
 
 @app.route('/mystocks')
 def render_my_stocks():
@@ -42,7 +64,19 @@ def button_pressed():
 	file = open('Data/stockData.txt', 'w')
 	file.write(json.dumps(stockDict))
 	file.close()
-	return render_template("graph.html", title = 'stockinfo', display = 'Upvoted')
+	for file in glob("./templates/*-graph.html"): #get rid of all previous graph htmls <- temp fix
+		os.remove(file)
+	stockname = stockDict[stockabbrev + '-name']
+
+	file = open('Data/stockData.txt', 'r')
+	stockDict = json.loads(file.read())
+	file.close()
+	upvotes = stockDict[stockabbrev]
+	data = stocks.getChart(stockabbrev)
+	quote = stocks.getQuote(stockabbrev)
+	graph.makeGraph(stockname, stockabbrev, data, quote, str(upvotes))
+	sheet = stockabbrev + "-graph.html"
+	return render_template(stockabbrev + "-graph.html", title = 'stockinfo', display = 'Upvoted')
 
 @app.route('/stockinfo', methods = ['GET']) #example http query: (home url)/stockinfo?name=Microsoft&abbrev=MSFT
 def showInfo():
@@ -55,11 +89,10 @@ def showInfo():
 	stockDict = json.loads(file.read())
 	file.close()
 	upvotes = stockDict[stockabbrev]
-
 	data = stocks.getChart(stockabbrev)
 	quote = stocks.getQuote(stockabbrev)
 	graph.makeGraph(stockname, stockabbrev, data, quote, str(upvotes))
-	sheet = "graph.html"
+	sheet = stockabbrev + "-graph.html"
 	return render_template(sheet, title = 'stockinfo', display = 'Upvote')
 
 
