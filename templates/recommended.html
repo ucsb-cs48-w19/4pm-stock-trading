@@ -141,25 +141,26 @@
 <body>
   <div class="topnav">
       <a href="/">Home</a>
-      <a class="active" href="/recommended">Recommended Stocks</a>
+      <a class="active" href="/trending">Trending Stocks</a>
       <a href="/about">About</a>
       <a onclick="signOut()" href= "/">Sign Out</a>
   <li style="float:right"><a href="#signin"><div class="g-signin2" data-onsuccess="onSignIn"></div></a></li>
   </div>
 <h3 class = "header">4PM STOCK TRADING</h3>
 <section class = "dashboard">
-  <h1>Recommended</h1>
+  <h1>{{title}}</h1>
   <input type="text" id="myInput" onkeyup="filter()" placeholder="Search for stocks">
   <div class="tbl-header">
       <table cellpadding="0" cellspacing="0">
         <thead>
           <tr>
-            <th>Code</th>
+            <th>Ticker</th>
             <th>Company</th>
             <th>Price</th>
             <th>Change</th>
             <th>Change %</th>
-            <th>Rating</th>
+            <th>Upvotes</th>
+            <th></th>
           </tr>
         </thead>
       </table>
@@ -167,46 +168,35 @@
   <div class="tbl-content">
       <table cellpadding="0" cellspacing="0" id = "myTable">
         <tbody>
-          <tr class = "clickable">
-            <td>AMZN</td>
-            <td>Amazon</td>
-            <td>$1.02</td>
-            <td>-1.01</td>
-            <td>+2.36%</td>
-            <td>10</td>
-          </tr>
-          <tr class = "clickable">
-            <td>AAPL</td>
-            <td>Apple </td>
-            <td>$1.38</td>
-            <td>+2.01</td>
-            <td>-0.36%</td>
-            <td>10</td>
-          </tr>
-          <tr class = "clickable">
-            <td>FB</td>
-            <td>Facebook</td>
-            <td>$3.22</td>
-            <td>+0.01</td>
-            <td>+1.36%</td>
-            <td>10</td>
-          </tr>
-          <tr class = "clickable">
-            <td>NFLX</td>
-            <td>Netflix</td>
-            <td>$1.02</td>
-            <td>-1.01</td>
-            <td>+2.36%</td>
-            <td>10</td>
-          </tr>
-          <tr class = "clickable">
-            <td>PYPL</td>
-            <td>Paypal </td>
-            <td>$1.38</td>
-            <td>+2.01</td>
-            <td>-0.36%</td>
-            <td>10</td>
-          </tr>
+        <script language="javascript" type="text/javascript">
+          var names = {{ stocknames|tojson }};
+          var tickers = {{ stocktickers|tojson }};
+          var stockUpvotes = {{ upvotes|tojson }};
+          var temp = "Click to learn more.";
+          console.log(names)
+          for (var a=0; a < names.length; a++) {
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("GET", "https://api.iextrading.com/1.0/stock/" + tickers[a] + "/quote", false);
+            xmlHttp.send(null);
+            var arr = JSON.parse(xmlHttp.response);
+            document.write("<tr class = \"clickable\" onclick = \"window.location='/stockinfo?name=" + names[a] + "&abbrev=" + tickers[a] + "'\">");
+              document.write("<td>"+tickers[a]+"</td>");
+              document.write("<td>"+names[a]+"</td>");
+              document.write("<td>$" + arr['latestPrice'].toFixed(2) + "</td>");
+              document.write("<td>$" + arr['change'] + "</td>");
+              document.write("<td ");
+              if (arr['changePercent']>0){
+                document.write("style='color:#25b227'>%");
+              }
+              if (arr['changePercent'] < 0) {
+                document.write("style = 'color:#ff554c'>%");
+              }
+              document.write((arr['changePercent']*100).toFixed(2)+"</td>");
+              document.write("<td>"+stockUpvotes[a]+"</td>");
+              // put the rest of the data here
+            document.write("</tr>");
+          }
+        </script>
         </tbody>
       </table>
     </div>

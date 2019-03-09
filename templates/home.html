@@ -7,7 +7,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 	<meta name="google-signin-client_id" content="153539022496-7vdj6npoqb0ifaa4ocjbaf1mn8sq97d8.apps.googleusercontent.com">
 </head>
 <style>
@@ -153,7 +153,7 @@
 <body>
 	<div class="topnav">
   		<a class="active" href="/">Home</a>
-  		<a href="/recommended">Recommended Stocks</a>
+  		<a href="/trending">Trending Stocks</a>
   		<a href="/about">About</a>
   		<a onclick="signOut()" href= "/">Sign Out</a>
 
@@ -287,7 +287,11 @@ document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
 		}
 	}
 </script>
+<<<<<<< HEAD
 <!-- SCRIPT TO ADD DATE-->
+=======
+
+>>>>>>> origin/master
 <script>
 var dt = new Date();
 if (dt.getHours() > 12) {
@@ -296,5 +300,9 @@ if (dt.getHours() > 12) {
 	document.getElementById("datetime").innerHTML = (("0"+(dt.getMonth()+1)).slice(-2)) +"/"+ (("0"+dt.getDate()).slice(-2)) +"/"+ (dt.getFullYear()) +" at "+ (("0"+dt.getHours()).slice(-2)) +":"+ (("0"+dt.getMinutes()).slice(-2) + " AM");
 }
 </script>
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 </body>
 </html>

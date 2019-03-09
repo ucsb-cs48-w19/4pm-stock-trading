@@ -39,7 +39,7 @@ This app displays a list of popular stocks and allows you to choose which ones y
 This assumes that Python 3.6 and above is installed.
 
 Install all the required Python modules using this command:
-`$ pip install -r requirements.txt`
+`$ pip3 install -r requirements.txt`
 
 ## Functionality
 
