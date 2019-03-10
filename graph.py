@@ -9,7 +9,7 @@ from datetime import date as dt_date
 import plotly.plotly as py
 import plotly.tools as plotly_tools
 import plotly.graph_objs as go
-plotly_tools.set_credentials_file(username='franklee26', api_key='NUbcE4xBFBPFP6tezOBR')
+plotly_tools.set_credentials_file(username='shirlyn', api_key='jJ4XMl13cwh2BzVSFkwf')
 
 import os
 import tempfile
@@ -25,13 +25,11 @@ def moving_average(interval, window_size):
 	return np.convolve(interval, window, 'same')
 
 # returns a plotly url (will append url below in html)
-def makeGraph(stock_name, stock_abbrev, quotes, quote, upvotes):
+def makeGraph(stock_name, stock_abbrev, quotes, quote):
 	x = []
 	y = []
 	values = []
 	ma = []
-	print(stock_name)
-	print(stock_abbrev)
 
 	price = str(quote['latestPrice'])
 	op = str(quote['open'])
@@ -71,12 +69,11 @@ def makeGraph(stock_name, stock_abbrev, quotes, quote, upvotes):
 	layout=go.Layout(yaxis={'title':'Price (USD)'})
 	layout['annotations'] = annotations
 	figure=go.Figure(data=data,layout=layout)
-	
+
 	config = {'scrollZoom': False}
 	py.iplot(figure, filename=stock_name + ' stock moving average', annotations = annotations, config = config)
 
 	plot_url = py.plot(figure, filename=stock_name + ' stock moving average', auto_open=False, annotations = annotations)
-	print (plot_url)
 	return (plot_url)
 
 if __name__ == "__main__":

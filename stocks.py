@@ -5,22 +5,12 @@ import json
 import re
 
 
-#class Stock:                                                                                                                                                                                               
-#   def __init__(self,name):                                                                                                                                                                                
-#       self.price =                                                                                                                                                                                        
-#       self.name  = name                                                                                                                                                                                   
-
-
-
-
 Tesla = Stock("TSLA")
 Apple = Stock("AAPL")
 Google = Stock("GOOGL")
 Microsoft = Stock("MSFT")
 Amazon = Stock("AMZN")
-
-
-#print(Stock1.name)                                                                                                                                                                                         
+                                                                                                                                                                                    
 
 def getChart(name):
     json1 = urlopen("https://api.iextrading.com/1.0/stock/"+ name + "/chart/1y").read()
@@ -29,13 +19,6 @@ def getChart(name):
     for dict in j:
         answer[dict['date']] = dict['open']
     return answer
-
-#    s = "{"
- #   for d in j:
- #      s+= d['date'] + ":" + d['open']
-       
- #   s += "}"    
- #   return s    
 
 def getQuote(name):
 	name = re.sub(r'[-]', '.', name)

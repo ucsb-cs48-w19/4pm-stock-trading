@@ -22,7 +22,7 @@ def home():
 # routes to trending page
 @app.route('/trending')
 def render_recommended():
-	file = open('Data/stockData.txt', 'r')
+	file = open('data/stockData.txt', 'r')
 	stockDict = json.loads(file.read())
 	file.close()
 	names = []
@@ -40,10 +40,6 @@ def render_recommended():
 		upvotes.append(str(maxUpvote))
 		stockDict.pop(maxticker)
 		stockDict.pop(maxticker+'-name')
-		print(list(stockDict.keys())[0])
-	#print(names)
-	#print(tickers)
-	#print(upvotes)
 	return render_template("recommended.html", title = 'Trending',stocknames = names, stocktickers= tickers, upvotes = upvotes)
 
 # routes to stocks page
@@ -57,29 +53,23 @@ def render_about():
     return render_template("about.html", title = 'about')
 
 # routes to upvoted 
-@app.route('/upvoted', methods = ['GET'])
+@app.route('/upvoted', methods = ['GET','POST'])
 def button_pressed():
+	stockname = request.args.get('name')
 	stockabbrev = request.args.get('abbrev')
-	file = open('Data/stockData.txt', 'r')
+	url = request.form.get("url")
+	#########
+	file = open('data/stockData.txt', 'r')
 	stockDict = json.loads(file.read())
 	file.close()
 	stockDict[stockabbrev] = stockDict[stockabbrev] + 1
-	file = open('Data/stockData.txt', 'w')
+	upvotes = stockDict[stockabbrev]
+	file = open('data/stockData.txt', 'w')
 	file.write(json.dumps(stockDict))
 	file.close()
-	for file in glob("./templates/*-graph.html"): #get rid of all previous graph htmls <- temp fix
-		os.remove(file)
-	stockname = stockDict[stockabbrev + '-name']
-
-	file = open('Data/stockData.txt', 'r')
-	stockDict = json.loads(file.read())
-	file.close()
-	upvotes = stockDict[stockabbrev]
 	data = stocks.getChart(stockabbrev)
 	quote = stocks.getQuote(stockabbrev)
-	graph.makeGraph(stockname, stockabbrev, data, quote, str(upvotes))
-	sheet = stockabbrev + "-graph.html"
-	return render_template(stockabbrev + "-graph.html", title = 'stockinfo', display = 'Upvoted')
+	return render_template("graph.html", title = 'stockinfo', name = stockname, abbrev = stockabbrev, graph_url = url, vote_count = upvotes)
 
 # routes to info
 @app.route('/stockinfo', methods = ['GET']) #example http query: (home url)/stockinfo?name=Microsoft&abbrev=MSFT
@@ -87,16 +77,15 @@ def showInfo():
 	stockname = request.args.get('name')
 	stockabbrev = request.args.get('abbrev')
 
-	file = open('Data/stockData.txt', 'r')
+	file = open('data/stockData.txt', 'r')
 	stockDict = json.loads(file.read())
 	file.close()
 	upvotes = stockDict[stockabbrev]
+
 	data = stocks.getChart(stockabbrev)
 	quote = stocks.getQuote(stockabbrev)
-	
 	url = graph.makeGraph(stockname, stockabbrev, data, quote)
-	sheet = "graph.html"
-	return render_template(sheet, title = 'stockinfo', name = stockname, abbrev = stockabbrev, graph_url = url)
+	return render_template("graph.html", title = 'stockinfo', name = stockname, abbrev = stockabbrev, graph_url = url, vote_count = upvotes)
 
 
 @app.route('/google973af8c591e84ad7.html')
